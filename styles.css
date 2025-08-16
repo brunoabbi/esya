@@ -32,13 +32,14 @@
           text-decoration: none;
         }
 .video-fondo {
-      top: 0;
-      left: 0;
-      height: 100vh;
-      width: 100vw;
-      overflow: hidden;
-      z-index: -1;
-    }
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+    object-fit: cover;
+}
 
     .video-fondo video {
       min-width: 100%;
@@ -46,14 +47,6 @@
       object-fit: cover;
     }
 
-    /* Contenido por encima del video */
-    .contenido {
-      position: relative;
-      z-index: 1;
-      color: white;
-      text-align: center;
-      padding-top: 30vh;
-    }
 
     .logo {
       display: flex;
