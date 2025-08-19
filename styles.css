@@ -44,7 +44,7 @@
     .logo {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 6px;
     }
 
     .logo img {
@@ -83,7 +83,7 @@
       color: white;
       font-size: 1rem;
       cursor: pointer;
-      font-weight: 500;
+      font-weight: 600;
       transition: color 0.3s ease;
     }
 
@@ -334,8 +334,8 @@
 
 .h1-nh {
     font-size: 2.5rem;
-    font-weight: 800;
-    color: #f4f7ff;
+    font-weight: 600;
+    color: #ffffff;
     text-align: center;
     opacity: 0;          
     transform: translateY(20px); 
@@ -385,14 +385,14 @@
 
 .card-fa h2 {
     font-size: 2rem;
-    color: #f4f7ff;
+    color: #ffffff;
     margin-bottom: 40px; /* más espacio debajo del h2 */
     text-align: center;
 }
 
 .btn {
     --bg: #1e232d;
-    --fg: #eaf0ff;
+    --fg: #ffffff;
     --shadow: rgba(0,0,0,.4);
     display: inline-flex;
     align-items: center;
@@ -465,7 +465,7 @@
 }
 .cards-container a {
     text-decoration: none;
-  color: wheat; 
+  color: rgb(255, 255, 255); 
 }
 
 
