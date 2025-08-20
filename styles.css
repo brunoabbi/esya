@@ -481,7 +481,6 @@ h1 {
   }
   
 
-
     footer {
       background: rgba(27, 43, 68, 0.3);
       text-align: center;
@@ -493,4 +492,27 @@ h1 {
       margin-top: 10%;
     } 
      
-    
+   :root {  
+  --bg: #0b1020;  
+  --card: #141a2b;  
+  --muted: #9aa4b2;  
+  --primary: #4e8cff;  
+  --white: #ffffff;  
+  --radius: 14px;  
+  --shadow: 0 8px 20px rgba(0,0,0,0.35);  
+  --success: #38d18b;  
+  --error: #ff6b6b;  
+  --focus: 0 0 0 3px rgba(78,140,255,0.45);  
+}  
+
+:root {  
+  --bg: #0b1020;  
+  --card: #141a2b;  
+  --muted: #9aa4b2;  
+  --primary: #4e8cff;  
+  --white: #ffffff;  
+  --radius: 14px;  
+  --shadow: 0 8px 20px rgba(0,0,0,0.35);  
+}  
+
+

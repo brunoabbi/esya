@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aula Virtual - Inicio de Sesión</title>
+  <link rel="icon" type="image/png" href="/assets/logo.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body style="background: linear-gradient(135deg, #1b2b44, #243b55);" class="flex flex-col min-h-screen">
+
+  <!-- Navbar -->
+  <nav class="bg-transparent shadow-md fixed w-full top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="flex items-center space-x-3">
+        <!-- Logo o texto si quieres -->
+      </div>
+
+      <!-- Volver siempre visible -->
+      <div class="space-x-6">
+        <a href="/views/formacionagentes.html" class="text-gray-100 hover:text-blue-400 font-medium">Volver</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Form -->
+  <main class="flex-1 pt-16 flex items-center justify-center mb-8">
+    <div class="bg-white shadow-2xl rounded-2xl p-6 sm:p-8 w-full max-w-md mx-4">
+      <div class="text-center mb-6">
+        <img src="/assets/logo.png" 
+             alt="Logo Aula Virtual" 
+             class="mx-auto w-16 mb-4">
+        <h1 class="text-3xl font-bold text-gray-700">Aula Virtual</h1>
+        <p class="text-gray-500">Inicia sesión para continuar</p>
+      </div>
+
+      <form action="login.php" method="POST" class="space-y-5">
+        <div>
+          <label for="email" class="block text-gray-700 font-medium">Usuario</label>
+          <input type="email" id="email" name="email" required placeholder="ejemplo@correo.com"
+            class="w-full mt-2 px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-400 focus:outline-none transition">
+        </div>
+        <div>
+          <label for="password" class="block text-gray-700 font-medium">Contraseña</label>
+          <input type="password" id="password" name="password" required placeholder="********"
+            class="w-full mt-2 px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-400 focus:outline-none transition">
+        </div>
+
+        <button type="submit"
+          class="w-full bg-blue-600 text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition shadow-lg">
+          Ingresar
+        </button>
+      </form>
+
+      <p class="mt-6 text-center text-gray-600">
+        ¿No tienes cuenta?
+        <a href="/views/registro.html" class="text-blue-500 hover:underline font-medium">Regístrate aquí</a>
+      </p>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-300 py-4">
+    <div class="max-w-7xl mx-auto text-center">
+      <p class="text-sm">© 2025 Aula Virtual</p>
+    </div>
+  </footer>
+</body>
+</html>

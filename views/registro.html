@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro de Usuario - Escuela de Suboficiales y Agentes</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body style="background: linear-gradient(135deg, #1b2b44, #243b55);" 
+      class="flex flex-col min-h-screen">
+
+  <!-- Navbar -->
+  <nav class="bg-transparent shadow-md fixed w-full top-0 z-50 h-16 flex items-center">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center w-full">
+      <div class="flex items-center space-x-3">
+        <!-- Logo si quieres -->
+      </div>
+      <div class="space-x-6">
+        <a href="/views/formacionagentes.html" 
+           class="text-gray-100 hover:text-blue-400 font-medium">Volver</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Contenido con espacio arriba -->
+  <main class="flex-1 flex items-center justify-center px-4 pt-20 pb-10">
+    <div class="bg-white shadow-2xl rounded-2xl p-6 sm:p-8 w-full max-w-lg">
+      
+      <!-- Encabezado -->
+      <div class="text-center mb-6">
+        <img src="/assets/logo.png" 
+             alt="Logo Aula Virtual" 
+             class="mx-auto w-16 mb-4">
+        <h1 class="text-3xl font-bold text-gray-700">Aula Virtual</h1>
+        <p class="text-gray-500">Registrese para acceder</p>
+      </div>
+
+
+      <form action="#" method="POST" class="space-y-5">
+         <!-- Datos de acceso --> 
+          <h2 class="text-lg font-semibold text-gray-700 border-b pb-2">Datos de acceso:</h2>
+           <div> 
+            <label class="block text-gray-700 font-medium">Nombre de usuario *</label>
+             <input type="text" name="username" required placeholder="Ej: Medina Matías" class="w-full mt-2 px-4 py-3 border rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none transition">
+             </div>
+              <div> 
+                <label class="block text-gray-700 font-medium">Contraseña *</label>
+                 <input type="password" name="password" required minlength="4" placeholder="Mínimo 4 caracteres" class="w-full mt-2 px-4 py-3 border rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none transition">
+                 </div>
+                  <!-- Datos personales -->
+                  <h2 class="text-lg font-semibold text-gray-700 border-b pb-2">Datos personales</h2>
+                   <div> 
+                    <label class="block text-gray-700 font-medium">Nombres *</label> 
+                    <input type="text" name="nombres" required placeholder="Ej: Matías Exequiel Alejandro" class="w-full mt-2 px-4 py-3 border rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none transition"> 
+                </div> 
+                <div>
+                     <label class="block text-gray-700 font-medium">Apellidos *</label>
+                      <input type="text" name="apellidos" required placeholder="Ej: Pérez González" class="w-full mt-2 px-4 py-3 border rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none transition">
+                     </div> 
+                     <div> 
+                        <label class="block text-gray-700 font-medium">Email *</label> 
+                        <input type="email" name="email" required placeholder="Ej: matiasexequiel@gmail.com" class="w-full mt-2 px-4 py-3 border rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none transition"> 
+                    </div>
+                     <div>
+                         <label class="block text-gray-700 font-medium">Teléfono celular</label>
+                          <input type="tel" name="telefono" pattern="[0-9]{10}" placeholder="Ej: 1122334455" class="w-full mt-2 px-4 py-3 border rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none transition"> 
+                        </div>
+                         <!-- Select Turno -->
+                         <div> 
+                            <label class="block text-gray-700 font-medium">Turno</label> 
+                            <select name="turno" class="w-full mt-2 px-4 py-3 border rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none transition"> 
+                                <option value="">Selecciona un turno</option> 
+                                <option value="mañana">Mañana</option> 
+                                <option value="tarde">Tarde</option> 
+                            </select>
+                         </div> 
+                         <!-- Select Comisión --> 
+                          <div> 
+                            <label class="block text-gray-700 font-medium">Comisión *</label> 
+                            <select name="comision" required class="w-full mt-2 px-4 py-3 border rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none transition"> 
+                                <option value="">Selecciona una comisión</option> 
+                                <option value="comision1">Comisión A</option> 
+                                <option value="comision2">Comisión B</option> 
+                                <option value="comision3">Comisión C</option> 
+                                <option value="comision3">Comisión D</option>
+                                <option value="comision3">Comisión E</option>
+                                <option value="comision3">Comisión F</option>
+                            </select> 
+                        </div> 
+                        <!-- Botón --> 
+                        <button type="submit" class="w-full bg-indigo-600 text-white py-3 rounded-xl font-semibold hover:bg-indigo-700 transition shadow-lg"> Registrarse </button>
+                     </form> 
+                     <!-- Link a login -->
+                       <p class="mt-6 text-center text-gray-600"> ¿Ya tienes cuenta? <a href="/views/aulavirtual.html" class="text-indigo-600 hover:underline font-medium">Inicia sesión aquí</a> </p>
+                     </div>
+    </div>
+  </main>
+</body>
+</html>
