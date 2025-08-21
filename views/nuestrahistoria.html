@@ -54,9 +54,9 @@
     nav a{ padding:.55rem .8rem; border-radius: 999px; }
     nav a:hover{ background: color-mix(in oklab, var(--surface), white 6%); text-decoration:none; }
     .menu-btn{ display:none; }
-    @media (max-width: 760px){
+    @media (max-width: 576px){
       nav ul{ display:none; }
-      .menu-btn{ display:inline-flex; gap:.4rem; align-items:center; padding:.5rem .85rem; border-radius:999px; border:1px solid color-mix(in oklab, var(--surface), white 12%); background:var(--surface); color:var(--text); }
+      .menu-btn{ display:inline-flex; gap:.4rem; align-items:center; padding:.5rem .85rem; border-radius:999px; border:1px solid color-mix(in oklab, var(--surface), rgb(15, 0, 49) 12%); background:var(--surface); color:var(--text); }
       .menu-btn[aria-expanded="true"] + ul{ display:flex; flex-direction:column; position:absolute; inset: 58px 4% auto 4%; background:var(--surface); padding:.6rem; border-radius: 16px; box-shadow: var(--shadow); border:1px solid color-mix(in oklab, var(--surface), white 10%); }
       nav a{ display:block; padding:.7rem .9rem; }
     }
@@ -70,7 +70,7 @@
     .subtitle{ color: var(--muted); font-size: clamp(1rem, .7vw + .9rem, 1.15rem); }
     .btn{ display:inline-flex; align-items:center; gap:.5rem; border:1px solid transparent; padding:.7rem 1rem; border-radius: 14px; font-weight:600; cursor:pointer; }
     .btn.primary{ background: linear-gradient(135deg, var(--primary), var(--primary-600)); color:white; box-shadow: 0 6px 16px rgba(14,165,164,.35); }
-    @media (max-width: 920px){ .hero-grid{ grid-template-columns: 1fr; } .hero-figure{ order:-1; } }
+    @media (max-width: 576px){ .hero-grid{ grid-template-columns: 1fr; } .hero-figure{ order:-1; } }
 
     /* Secciones */
     section{ padding: 46px 0;}
@@ -85,7 +85,7 @@
     /* Footer */
     footer{ padding: 46px 0; color: var(--muted); }
     .footer-grid{ display:grid; gap: 1rem; justify-content: center; }
-    @media (max-width: 720px){ .footer-grid{ grid-template-columns: 1fr; text-align:center; } }
+    @media (max-width: 576px){ .footer-grid{ grid-template-columns: 1fr; text-align:center; } }
 
     /* Accesibilidad */
     .sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
@@ -97,7 +97,7 @@
 
 
 /* Responsive */
-@media(max-width:600px){
+@media(max-width:576px){
 .card{ padding:1rem; }
 .card h3{ font-size:1.1rem; }
 .card p{ font-size:.95rem; }}
