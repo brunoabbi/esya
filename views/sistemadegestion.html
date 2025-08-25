@@ -1,58 +1,79 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Divisiones</title>
-     <link rel="stylesheet" href="/styles.css">
-     <link rel="icon" type="image/png" href="/assets/logo.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Divisiones</title>
+  <link rel="icon" type="image/png" href="/assets/logo.png">
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="body">
-     <nav>
-    <div class="logo">
-      <a href="/index.html"><img src="/assets/logo.png" alt="Logo"></a>
-    </div>
-    <div class="menu">
-      <div class="dropdown" id="dropdown">
-        <button class="dropdown-btn">▼</button>
-        <div class="dropdown-content">
-          <a href="/index.html">Inicio</a>
-        </div>
-        <div class="dropdown-content">
-          <a href="/views/nuestrahistoria.html">Nuestra Historia</a>
+<body class="min-h-screen flex flex-col bg-gradient-to-br from-[#1b2b44] via-[#243b55] to-[#111827] text-gray-100">
+
+  <!-- Navbar -->
+  <nav class="fixed top-0 w-full z-50 bg-black/30 backdrop-blur-md border-b border-white/10 shadow-md">
+    <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
+      <a href="/index.html" class="flex items-center space-x-3 text-white font-bold tracking-wide text-lg">
+        <img src="/assets/logo.png" alt="Logo" class="w-9">
+        
+      </a>
+      <div class="relative group">
+        <button class="px-3 py-1 bg-white/10 hover:bg-white/20 rounded-md transition text-sm"> ▼</button>
+        <div class="absolute hidden group-hover:block right-0 mt-2 bg-gray-900/95 border border-white/10 rounded-lg shadow-lg overflow-hidden">
+          <a href="/index.html" class="block px-4 py-2 text-sm hover:bg-blue-600 hover:text-white">Inicio</a>
+          <a href="/views/nuestrahistoria.html" class="block px-4 py-2 text-sm hover:bg-blue-600 hover:text-white">Nuestra Historia</a>
         </div>
       </div>
     </div>
   </nav>
-  
-    <h1>Selecciona la División a la que Quieres Acceder:</h1>
 
-<div class="cards-container"> 
-    <a href="/views/formacionagentes.html" class="card-fa-sg">
-  <img src="/assets/cuerpo.png" alt="Logo 1" class="card-logo">
-  <h2>División Cuerpo</h2>
-</a>
+  <!-- Contenido -->
+  <main class="flex-1 flex flex-col items-center justify-center pt-28 pb-16 px-4">
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-white mb-12 text-center">
+      Selecciona la División a la que Quieres Acceder
+    </h1>
 
-     <a href="/views/formacionagentes.html" class="card-fa-sg">
-  <img src="/assets/jefaturadeestudio.png" alt="Logo 1" class="card-logo">
-  <h2>Jefatura de Estudio</h2>
-</a>
-     <a href="/views/formacionagentes.html" class="card-fa-sg">
-  <img src="/assets/enfermeria.png" alt="Logo 1" class="card-logo">
-  <h2>Enfermería</h2>
-</a>
-     <a href="/views/formacionagentes.html" class="card-fa-sg">
-  <img src="/assets/ayudantia.png" alt="Logo 1" class="card-logo">
-  <h2>Ayudantía</h2>
-</a>
-</div>
+    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 max-w-6xl w-full">
+      
+      <!-- Card -->
+      <a href="/views/logindivisiones.html" 
+         class="bg-black border border-black rounded-2xl p-6 flex flex-col items-center text-center 
+                shadow-lg hover:shadow-2xl hover:bg-white/50 hover:border-white transform hover:-translate-y-2 transition-all">
+        <img src="/assets/cuerpo.png" alt="Logo" class="w-16 mb-4 drop-shadow-md">
+        <h2 class="text-lg font-semibold text-white">División Cuerpo</h2>
+      </a>
 
-<br>
+      <a href="/views/logindivisiones.html" 
+         class="bg-black border border-black rounded-2xl p-6 flex flex-col items-center text-center 
+                shadow-lg hover:shadow-2xl hover:bg-white/50 hover:border-white transform hover:-translate-y-2 transition-all">
+        <img src="/assets/jefaturadeestudio.png" alt="Logo" class="w-16 mb-4 drop-shadow-md">
+        <h2 class="text-lg font-semibold text-white">Jefatura de Estudio</h2>
+      </a>
 
-    <footer>
-    &copy; 2025 Sistema Web de Gestión - Escuela de suboficiales y agentes "Agente Juan José Vides"  </footer>
-   
-  <script src="/scripts.js"></script> 
+      <a href="/views/logindivisiones.html" 
+        class="bg-black border border-black rounded-2xl p-6 flex flex-col items-center text-center 
+                shadow-lg hover:shadow-2xl hover:bg-white/50 hover:border-white transform hover:-translate-y-2 transition-all">
+        <img src="/assets/enfermeria.png" alt="Logo" class="w-16 mb-4 drop-shadow-md">
+        <h2 class="text-lg font-semibold text-white">Enfermería</h2>
+      </a>
+
+      <a href="/views/logindivisiones.html" 
+        class="bg-black border border-black rounded-2xl p-6 flex flex-col items-center text-center 
+                shadow-lg hover:shadow-2xl hover:bg-white/50 hover:border-white transform hover:-translate-y-2 transition-all">
+        <img src="/assets/ayudantia.png" alt="Logo" class="w-16 mb-4 drop-shadow-md">
+        <h2 class="text-lg font-semibold text-white">Ayudantía</h2>
+      </a>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-black/30 border-t border-white/10 py-4 backdrop-blur-sm mt-auto">
+    <div class="max-w-7xl mx-auto text-center">
+      <p class="text-sm text-gray-400">
+        © 2025 Sistema Web de Gestión - Escuela de suboficiales y agentes "Agente Juan José Vides"
+      </p>
+    </div>
+  </footer>
+
 </body>
 </html>
-

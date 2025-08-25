@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Divisiones-Inicio de Sesión</title>
+  <link rel="icon" type="image/png" href="/assets/logo.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="flex flex-col min-h-screen bg-gradient-to-br from-[#1b2b44] via-[#243b55] to-[#111827] text-gray-100">
+
+  <!-- Navbar -->
+  <nav class="fixed w-full top-0 z-50 backdrop-blur-md bg-black/30 border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+      <a href="/" class="flex items-center space-x-3 text-white font-bold tracking-wide text-lg">
+      </a>
+      <a href="/views/sistemadegestion.html" 
+         class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full font-medium transition shadow-md">
+        Volver
+      </a>
+    </div>
+  </nav>
+
+  <!-- Main Form -->
+  <main class="flex-1 pt-20 flex items-center justify-center mb-40"> <!-- 👈 más separación con el footer -->
+    <div class="backdrop-blur-xl bg-white/10 border border-white/20 shadow-2xl rounded-2xl p-6 sm:p-8 w-full max-w-sm mx-4">
+      <div class="text-center mb-6">
+        <img src="/assets/logo.png" 
+             alt="Logo Aula Virtual" 
+             class="mx-auto w-16 mb-4 drop-shadow-lg">
+        <h1 class="text-2xl font-extrabold text-white">Bienvenido</h1>
+        <p class="text-gray-300 text-sm">Inicia sesión para acceder a tu división</p>
+      </div>
+
+      <form action="login.php" method="POST" class="space-y-5">
+        <!-- Usuario -->
+        <div>
+          <label for="email" class="block text-gray-200 font-medium">Usuario</label>
+          <input type="email" id="email" name="email" required placeholder="ejemplo@correo.com"
+            class="w-full mt-2 px-4 py-2.5 rounded-xl bg-white/20 border border-white/30 text-white placeholder-gray-300 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 focus:outline-none shadow-inner text-sm">
+        </div>
+        <!-- Contraseña -->
+        <div>
+          <label for="password" class="block text-gray-200 font-medium">Contraseña</label>
+          <input type="password" id="password" name="password" required placeholder="********"
+            class="w-full mt-2 px-4 py-2.5 rounded-xl bg-white/20 border border-white/30 text-white placeholder-gray-300 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 focus:outline-none shadow-inner text-sm">
+        </div>
+        <!-- Botón -->
+        <button type="submit"
+          class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2.5 rounded-xl font-semibold transition transform hover:scale-[1.02] shadow-lg text-sm">
+          Ingresar
+        </button>
+      </form>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-black/30 border-t border-white/10 py-4 backdrop-blur-sm">
+    <div class="max-w-7xl mx-auto text-center">
+      <p class="text-sm text-gray-400">© 2025 sistema de gestión</p>
+    </div>
+  </footer>
+</body>
+</html>
