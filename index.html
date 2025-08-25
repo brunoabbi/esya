@@ -23,14 +23,17 @@
 <body class="min-h-screen flex flex-col text-white relative">
 
   <!-- VIDEO de fondo para PC -->
-  <video autoplay muted loop playsinline class="hidden md:block absolute top-0 left-0 w-full h-full -z-10">
-    <source src="/assets/horizontal.mp4" type="video/mp4">
-  </video>
+<video class="hidden md:block absolute top-0 left-0 w-full h-full -z-10"
+       autoplay muted playsinline loop>
+  <source src="/assets/horizontal.mp4" type="video/mp4">
+</video>
 
-  <!-- VIDEO de fondo para móviles -->
-  <video autoplay muted loop playsinline class="block md:hidden absolute top-0 left-0 w-full h-full -z-10">
-    <source src="/assets/vertical.mp4" type="video/mp4">
-  </video>
+<!-- VIDEO de fondo para móviles -->
+<video class="block md:hidden absolute top-0 left-0 w-full h-full -z-10"
+       autoplay muted playsinline loop>
+  <source src="/assets/vertical.mp4" type="video/mp4">
+</video>
+
 
   <!-- Overlay oscuro para que se lea el texto -->
   <div class="absolute inset-0 bg-black/40 -z-10"></div>
