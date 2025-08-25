@@ -12,7 +12,7 @@
   <!-- Fuente -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    body { font-family: 'Inter', sans-serif; }
+    body { font-family: 'Inter', sans-serif; background-color:linear-gradient(135deg, #1b2b44, #243b55);; }
     video {
       object-fit: cover;
       width: 100%;
@@ -22,19 +22,20 @@
 </head>
 <body class="min-h-screen flex flex-col text-white relative">
 
-  <!-- VIDEO de fondo para PC -->
-<video class="hidden md:block absolute top-0 left-0 w-full h-full -z-10"
-       autoplay muted playsinline loop>
-  <source src="/assets/horizontal.mp4" type="video/mp4">
-</video>
 
-<!-- VIDEO de fondo para móviles -->
-<!-- MOBILE video -->
-<video autoplay muted playsinline loop
-       class="block md:hidden absolute top-0 left-0 w-full h-full -z-10"
-       poster="/assets/vertical.jpg">
-  <source src="/assets/vertical.mp4" type="video/mp4">
-</video>
+
+<video autoplay muted loop playsinline 
+         class="hidden md:block absolute top-0 left-0 w-full h-full -z-10 object-cover">
+    <source src="/assets/horizontal.mp4" type="video/mp4">
+    <!-- Fallback si el video no carga -->
+  </video>
+
+  <!-- VIDEO de fondo para móviles -->
+  <video id="mobileVideo" autoplay muted loop playsinline 
+         class="block md:hidden absolute top-0 left-0 w-full h-full -z-10 object-cover">
+    <source src="/assets/vertical.mp4" type="video/mp4">
+    <!-- Si falla, se verá el color del body -->
+  </video>
 
 
 
@@ -87,6 +88,16 @@
     btn.addEventListener("click", () => {
       menu.classList.toggle("hidden");
     });
+
+    const mobileVideo = document.getElementById("mobileVideo");
+window.addEventListener("load", () => {
+  mobileVideo.play().catch(() => {
+    document.addEventListener("touchstart", () => {
+      mobileVideo.play();
+    }, { once: true });
+  });
+});
+
   </script>
 
   <!-- Animación -->
