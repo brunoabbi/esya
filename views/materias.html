@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Materias</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#0b0f1a] min-h-screen flex flex-col items-center p-6">
+
+   <!-- Navbar -->
+  <nav class="fixed top-0 w-full z-50 bg-black/30 backdrop-blur-md border-b border-white/10 shadow-md">
+    <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
+      <a href="/views/modulos.html" class="flex items-center space-x-3 text-white font-semibold tracking-wide">
+        <img src="/assets/logo.png" alt="Logo" class="w-9 h-9">
+      </a>
+      <a href="/views/modulos.html" class="px-3 py-1 text-sm bg-white/10 hover:bg-white/20 rounded-md transition">Volver</a>
+    </div>
+  </nav>
+
+ 
+ <section class="max-w-7xl mx-auto">
+      <header class="mb-8">
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-white">Módulo 1: Materias</h1>
+        <p class="text-gray-300 mt-2">Selecciona una materia</p>
+      </header>
+
+      <!-- Buscador -->
+      <div class="mb-8 max-w-md">
+        <label for="buscar" class="sr-only">Buscar materia</label>
+        <input id="buscar" type="text" placeholder="Buscar materia…" class="w-full rounded-xl bg-white/10 border border-white/20 px-4 py-2 outline-none focus:ring-2 focus:ring-cyan-400 placeholder-gray-400" oninput="filtrarMaterias(this.value)">
+      </div>
+  <!-- Lista de materias -->
+  <div id="materiasGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl">
+    <a href="#" data-nombre="derecho-penal" class="group block rounded-2xl bg-white/10 border border-white/20 backdrop-blur-xl p-5 shadow-lg hover:shadow-2xl hover:-translate-y-1.5 hover:border-cyan-400/40 transition transform">
+      <div class="flex items-center justify-between">
+        <span class="text-2xl">⚖️</span>
+        <span class="text-xs px-2 py-0.5 rounded-full bg-cyan-500/20 border border-cyan-400/30">Teórico</span>
+      </div>
+      <h2 class="mt-4 text-lg font-semibold text-white">Módulo Inicial Básico. normativas Nacionales y Provinciales</h2>
+      <span class="mt-4 inline-flex items-center text-sm text-cyan-300">Ir a la materia →</span>
+    </a>
+
+    <a href="#" data-nombre="Doctrina" class="group block rounded-2xl bg-white/10 border border-white/20 backdrop-blur-xl p-5 shadow-lg hover:shadow-2xl hover:-translate-y-1.5 hover:border-cyan-400/40 transition transform">
+      <div class="flex items-center justify-between">
+        <span class="text-2xl">👮‍♂️</span>
+        <span class="text-xs px-2 py-0.5 rounded-full bg-blue-500/20 border border-blue-400/30">Teórico</span>
+      </div>
+      <h2 class="mt-4 text-lg font-semibold text-white">Concepto de Doctrina</h2>
+      <span class="mt-4 inline-flex items-center text-sm text-cyan-300">Ir a la materia →</span>
+    </a>
+
+        <a href="#" data-nombre="Ceremonial-Protocolo" class="group block rounded-2xl bg-white/10 border border-white/20 backdrop-blur-xl p-5 shadow-lg hover:shadow-2xl hover:-translate-y-1.5 hover:border-cyan-400/40 transition transform focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-transparent">
+          <div class="flex items-center justify-between">
+            <span class="text-2xl">⚔️</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-400/30">Mixto</span>
+          </div>
+          <h2 class="mt-4 text-lg font-semibold text-white">Ceremonial, Protocolo y Procedimiento Policial</h2>   
+                 <span class="mt-4 inline-flex items-center text-sm text-cyan-300">Ir a la materia →</span>
+        </a>
+
+        <a href="#" data-nombre="Uso-racional" class="group block rounded-2xl bg-white/10 border border-white/20 backdrop-blur-xl p-5 shadow-lg hover:shadow-2xl hover:-translate-y-1.5 hover:border-cyan-400/40 transition transform focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-transparent">
+          <div class="flex items-center justify-between">
+            <span class="text-2xl">🛡️</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-amber-500/20 border border-amber-400/30">Teórico</span>
+          </div>
+          <h2 class="mt-4 text-lg font-semibold text-white">Uso racional de los dispositivos de coerción</h2>
+          <span class="mt-4 inline-flex items-center text-sm text-cyan-300">Ir a la materia →</span>
+        </a>
+
+        <a href="#" data-nombre="primeros-auxilios" class="group block rounded-2xl bg-white/10 border border-white/20 backdrop-blur-xl p-5 shadow-lg hover:shadow-2xl hover:-translate-y-1.5 hover:border-cyan-400/40 transition transform focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-transparent">
+          <div class="flex items-center justify-between">
+            <span class="text-2xl">⛑️</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-rose-500/20 border border-rose-400/30">Teórico</span>
+          </div>
+          <h2 class="mt-4 text-lg font-semibold text-white">Primeros Auxilios</h2>
+          <span class="mt-4 inline-flex items-center text-sm text-cyan-300">Ir a la materia →</span>
+        </a>
+
+        <a href="#l" data-nombre="Defensa-Policial" class="group block rounded-2xl bg-white/10 border border-white/20 backdrop-blur-xl p-5 shadow-lg hover:shadow-2xl hover:-translate-y-1.5 hover:border-cyan-400/40 transition transform focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-transparent">
+          <div class="flex items-center justify-between">
+            <span class="text-2xl">🥋</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-fuchsia-500/20 border border-fuchsia-400/30">Práctico</span>
+          </div>
+          <h2 class="mt-4 text-lg font-semibold text-white">Defensa Policial aplicada a la labor del Agente de Policía</h2>
+          <span class="mt-4 inline-flex items-center text-sm text-cyan-300">Ir a la materia →</span>
+        </a>
+
+        <a href="#" data-nombre="Enfoque-sociológico" class="group block rounded-2xl bg-white/10 border border-white/20 backdrop-blur-xl p-5 shadow-lg hover:shadow-2xl hover:-translate-y-1.5 hover:border-cyan-400/40 transition transform focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-transparent">
+          <div class="flex items-center justify-between">
+            <span class="text-2xl">🗣️</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-lime-500/20 border border-lime-400/30">Teórico</span>
+          </div>
+          <h2 class="mt-4 text-lg font-semibold text-white">Enfoque sociológico contemporaneo</h2>
+          <span class="mt-4 inline-flex items-center text-sm text-cyan-300">Ir a la materia →</span>
+        </a>
+
+        <a href="#" data-nombre="Seguridad-Vial" class="group block rounded-2xl bg-white/10 border border-white/20 backdrop-blur-xl p-5 shadow-lg hover:shadow-2xl hover:-translate-y-1.5 hover:border-cyan-400/40 transition transform focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-transparent">
+          <div class="flex items-center justify-between">
+            <span class="text-2xl">🚧</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-sky-500/20 border border-sky-400/30">Teórico</span>
+          </div>
+          <h2 class="mt-4 text-lg font-semibold text-white">Seguridad Vial</h2>
+          <span class="mt-4 inline-flex items-center text-sm text-cyan-300">Ir a la materia →</span>
+        </a>
+
+        <a href="#" data-nombre="aptitud-fisica" class="group block rounded-2xl bg-white/10 border border-white/20 backdrop-blur-xl p-5 shadow-lg hover:shadow-2xl hover:-translate-y-1.5 hover:border-cyan-400/40 transition transform focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-transparent">
+          <div class="flex items-center justify-between">
+            <span class="text-2xl">🏃‍♂️</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-violet-500/20 border border-violet-400/30">Práctico</span>
+          </div>
+          <h2 class="mt-4 text-lg font-semibold text-white">La aptitud física del Agente de Policía</h2>
+          <span class="mt-4 inline-flex items-center text-sm text-cyan-300">Ir a la materia →</span>
+        </a>
+
+        <a href="#" data-nombre="Herramientas" class="group block rounded-2xl bg-white/10 border border-white/20 backdrop-blur-xl p-5 shadow-lg hover:shadow-2xl hover:-translate-y-1.5 hover:border-cyan-400/40 transition transform focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-transparent">
+          <div class="flex items-center justify-between">
+            <span class="text-2xl">📚</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-indigo-500/20 border border-indigo-400/30">Teórico</span>
+          </div>
+          <h2 class="mt-4 text-lg font-semibold text-white">Herramientas para detener y superar la escala de violencia</h2>
+          <span class="mt-4 inline-flex items-center text-sm text-cyan-300">Ir a la materia →</span>
+        </a>
+
+  </div>
+
+  <!-- Modal a pantalla completa -->
+  <div id="detalleMateria" class="fixed inset-0 hidden z-50 bg-blue-950/95 text-white overflow-y-auto">
+    <div class="relative w-full h-full flex flex-col p-8">
+      
+      <!-- Botón cerrar -->
+      <button onclick="cerrarDetalle()" class="absolute top-6 right-8 text-white text-3xl font-bold hover:text-cyan-400 transition">
+        &times;
+      </button>
+      
+      <!-- Contenido del modal -->
+      <div class="max-w-4xl mx-auto mt-12 space-y-6">
+        <h2 id="tituloMateria" class="text-3xl font-bold"></h2>
+        <p id="descripcionMateria" class="text-gray-300"></p>
+
+        <div>
+          <h3 class="text-xl font-semibold mb-2">Archivos disponibles:</h3>
+          <ul id="archivosMateria" class="space-y-3"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // JSON de materias
+    const materias = [
+      {
+        nombre: "derecho-penal",
+        titulo: "Módulo Inicial Básico: normativas Nacionales y Provinciales",
+        descripcion: "Aprenderás las bases del Derecho Penal nacional y provincial.",
+        archivos: [
+          { nombre: "ejercicios.pdf", href: "/assets/materias/derecho-penal/ejercicios.pdf" },
+          { nombre: "resumen.pdf", href: "/assets/materias/derecho-penal/resumen.pdf" }
+        ]
+      },
+      {
+        nombre: "Doctrina",
+        titulo: "Concepto de Doctrina",
+        descripcion: "Introducción a los procedimientos policiales modernos.",
+        archivos: [
+          { nombre: "clase1.pdf", href: "/assets/materias/procedimiento-policial/clase1.pdf" }
+        ]
+      },
+      {
+        nombre: "Ceremonial-Protocolo",
+        titulo: "Módulo Inicial Básico: normativas Nacionales y Provinciales",
+        descripcion: "Aprenderás las bases del Derecho Penal nacional y provincial.",
+        archivos: [
+          { nombre: "ejercicios.pdf", href: "/assets/materias/derecho-penal/ejercicios.pdf" },
+          { nombre: "resumen.pdf", href: "/assets/materias/derecho-penal/resumen.pdf" }
+        ]
+      },
+      {
+        nombre: "Uso-racional",
+        titulo: "Módulo Inicial Básico: normativas Nacionales y Provinciales",
+        descripcion: "Aprenderás las bases del Derecho Penal nacional y provincial.",
+        archivos: [
+          { nombre: "ejercicios.pdf", href: "/assets/materias/derecho-penal/ejercicios.pdf" },
+          { nombre: "resumen.pdf", href: "/assets/materias/derecho-penal/resumen.pdf" }
+        ]
+      },
+      {
+        nombre: "primeros-auxilios",
+        titulo: "Módulo Inicial Básico: normativas Nacionales y Provinciales",
+        descripcion: "Aprenderás las bases del Derecho Penal nacional y provincial.",
+        archivos: [
+          { nombre: "ejercicios.pdf", href: "/assets/materias/derecho-penal/ejercicios.pdf" },
+          { nombre: "resumen.pdf", href: "/assets/materias/derecho-penal/resumen.pdf" }
+        ]
+      },
+      {
+        nombre: "Seguridad-Vial",
+        titulo: "Módulo Inicial Básico: normativas Nacionales y Provinciales",
+        descripcion: "Aprenderás las bases del Derecho Penal nacional y provincial.",
+        archivos: [
+          { nombre: "ejercicios.pdf", href: "/assets/materias/derecho-penal/ejercicios.pdf" },
+          { nombre: "resumen.pdf", href: "/assets/materias/derecho-penal/resumen.pdf" }
+        ]
+      },
+       {
+        nombre: "aptitud-fisica",
+        titulo: "Módulo Inicial Básico: normativas Nacionales y Provinciales",
+        descripcion: "Aprenderás las bases del Derecho Penal nacional y provincial.",
+        archivos: [
+          { nombre: "ejercicios.pdf", href: "/assets/materias/derecho-penal/ejercicios.pdf" },
+          { nombre: "resumen.pdf", href: "/assets/materias/derecho-penal/resumen.pdf" }
+        ]
+      },
+      {
+        nombre: "defensa-Policial",
+        titulo: "Módulo Inicial Básico: normativas Nacionales y Provinciales",
+        descripcion: "Aprenderás las bases del Derecho Penal nacional y provincial.",
+        archivos: [
+          { nombre: "ejercicios.pdf", href: "/assets/materias/derecho-penal/ejercicios.pdf" },
+          { nombre: "resumen.pdf", href: "/assets/materias/derecho-penal/resumen.pdf" }
+        ]
+      },
+      {
+        nombre: "Herramientas",
+        titulo: "Módulo Inicial Básico: normativas Nacionales y Provinciales",
+        descripcion: "Aprenderás las bases del Derecho Penal nacional y provincial.",
+        archivos: [
+          { nombre: "ejercicios.pdf", href: "/assets/materias/derecho-penal/ejercicios.pdf" },
+          { nombre: "resumen.pdf", href: "/assets/materias/derecho-penal/resumen.pdf" }
+        ]
+      },
+    ];
+
+    // Abrir modal
+    const enlaces = document.querySelectorAll('#materiasGrid a');
+    enlaces.forEach(link => {
+      link.addEventListener('click', function(e){
+        e.preventDefault();
+        const nombreMateria = this.dataset.nombre;
+        mostrarDetalle(nombreMateria);
+      });
+    });
+
+    function mostrarDetalle(nombre){
+      const materia = materias.find(m => m.nombre === nombre);
+      if(!materia) return;
+
+      document.getElementById('tituloMateria').innerText = materia.titulo;
+      document.getElementById('descripcionMateria').innerText = materia.descripcion;
+
+      const listaArchivos = document.getElementById('archivosMateria');
+      listaArchivos.innerHTML = materia.archivos.map(a => 
+        `<li>
+          <a href="${a.href}" download class="block p-3 bg-white/10 rounded-lg border border-white/20 hover:bg-cyan-500/20 hover:border-cyan-400/40 transition">
+            📄 ${a.nombre}
+          </a>
+        </li>`
+      ).join('');
+
+      document.getElementById('detalleMateria').classList.remove('hidden');
+    }
+
+    function cerrarDetalle(){
+      document.getElementById('detalleMateria').classList.add('hidden');
+    }
+  </script>
+</body>
+</html>
+
+

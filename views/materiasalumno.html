@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Módulo de Materias</title>
+  <link rel="icon" type="image/png" href="/assets/logo.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Animaciones */
+    .fade-in { animation: fadeIn 0.3s ease-out forwards; }
+    .fade-out { animation: fadeOut 0.3s ease-in forwards; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    @keyframes fadeOut {
+      from { opacity: 1; transform: scale(1); }
+      to { opacity: 0; transform: scale(0.95); }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#0b0f1a] text-gray-100">
+
+  <!-- Navbar -->
+  <nav class="fixed top-0 w-full z-50 bg-black/30 backdrop-blur-md border-b border-white/10 shadow-md">
+    <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
+      <a href="/views/modulos.html" class="flex items-center space-x-3 text-white font-semibold tracking-wide">
+        <img src="/assets/logo.png" alt="Logo" class="w-9 h-9">
+      </a>
+      <a href="/views/modulos.html" class="px-3 py-1 text-sm bg-white/10 hover:bg-white/20 rounded-md transition">Volver</a>
+    </div>
+  </nav>
+
+  <main class="flex-1 pt-28 pb-16 px-4">
+    <section class="max-w-7xl mx-auto">
+      <header class="mb-8">
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-white">Módulo 1: Materias</h1>
+        <p class="text-gray-300 mt-2">Selecciona una materia</p>
+      </header>
+
+      <!-- Buscador -->
+      <div class="mb-8 max-w-md">
+        <label for="buscar" class="sr-only">Buscar materia</label>
+        <input id="buscar" type="text" placeholder="Buscar materia…" class="w-full rounded-xl bg-white/10 border border-white/20 px-4 py-2 outline-none focus:ring-2 focus:ring-cyan-400 placeholder-gray-400" oninput="filtrarMaterias(this.value)">
+      </div>
+
+      <!-- GRID -->
+      <div id="gridMaterias" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+
+        <!-- Materia 1 -->
+        <div 
+          data-nombre="derecho penal" 
+          data-titulo="Módulo Inicial Básico. Normativas Nacionales y Provinciales"
+          data-tipo="Teórico" 
+          data-icono="⚖️"
+          data-descripcion="Estudio de las normativas nacionales y provinciales con enfoque en derecho penal aplicado a la función policial."
+          data-materiales='[
+            {"nombre": "Apuntes en PDF", "url": "/materiales/derecho-penal.pdf", "icono": "📄"},
+            {"nombre": "Presentación PPT", "url": "/materiales/derecho-penal.pptx", "icono": "📊"},
+            {"nombre": "Guía en Word", "url": "/materiales/derecho-penal.docx", "icono": "📝"}
+          ]'
+          class="group cursor-pointer block rounded-2xl bg-white/10 border border-white/20 backdrop-blur-xl p-5 shadow-lg hover:shadow-2xl hover:-translate-y-1.5 hover:border-cyan-400/40 transition transform">
+          <div class="flex items-center justify-between">
+            <span class="text-2xl">⚖️</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-cyan-500/20 border border-cyan-400/30">Teórico</span>
+          </div>
+          <h2 class="mt-4 text-lg font-semibold text-white">Normativas Nacionales y Provinciales</h2>
+          <span class="mt-4 inline-flex items-center text-sm text-cyan-300">Ver detalles →</span>
+        </div>
+
+        <!-- Materia 2 -->
+        <div 
+          data-nombre="primeros auxilios" 
+          data-titulo="Primeros Auxilios"
+          data-tipo="Teórico" 
+          data-icono="⛑️"
+          data-descripcion="Brinda herramientas para la asistencia inicial ante emergencias hasta la llegada de profesionales médicos."
+          data-materiales='[
+            {"nombre": "Manual PDF", "url": "/materiales/primeros-auxilios.pdf", "icono": "📄"},
+            {"nombre": "Guía rápida", "url": "/materiales/primeros-auxilios.docx", "icono": "📝"}
+          ]'
+          class="group cursor-pointer block rounded-2xl bg-white/10 border border-white/20 backdrop-blur-xl p-5 shadow-lg hover:shadow-2xl hover:-translate-y-1.5 hover:border-rose-400/40 transition transform">
+          <div class="flex items-center justify-between">
+            <span class="text-2xl">⛑️</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-rose-500/20 border border-rose-400/30">Teórico</span>
+          </div>
+          <h2 class="mt-4 text-lg font-semibold text-white">Primeros Auxilios</h2>
+          <span class="mt-4 inline-flex items-center text-sm text-rose-300">Ver detalles →</span>
+        </div>
+
+        <!-- Materia 3 -->
+        <div 
+          data-nombre="educacion fisica" 
+          data-titulo="Educación Física"
+          data-tipo="Práctico" 
+          data-icono="🏋️"
+          data-descripcion="Desarrollo de la condición física necesaria para el desempeño de la función policial."
+          data-materiales='[
+            {"nombre": "Rutinas en PDF", "url": "/materiales/educacion-fisica.pdf", "icono": "📄"},
+            {"nombre": "Video clases", "url": "/materiales/educacion-fisica.mp4", "icono": "🎥"}
+          ]'
+          class="group cursor-pointer block rounded-2xl bg-white/10 border border-white/20 backdrop-blur-xl p-5 shadow-lg hover:shadow-2xl hover:-translate-y-1.5 hover:border-green-400/40 transition transform">
+          <div class="flex items-center justify-between">
+            <span class="text-2xl">🏋️</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-green-500/20 border border-green-400/30">Práctico</span>
+          </div>
+          <h2 class="mt-4 text-lg font-semibold text-white">Educación Física</h2>
+          <span class="mt-4 inline-flex items-center text-sm text-green-300">Ver detalles →</span>
+        </div>
+
+        <!-- Materia 4 -->
+        <div 
+          data-nombre="criminologia" 
+          data-titulo="Criminología"
+          data-tipo="Teórico" 
+          data-icono="🕵️"
+          data-descripcion="Estudio de la criminología, teorías del delito y su aplicación práctica en la labor policial."
+          data-materiales='[
+            {"nombre": "Apuntes PDF", "url": "/materiales/criminologia.pdf", "icono": "📄"}
+          ]'
+          class="group cursor-pointer block rounded-2xl bg-white/10 border border-white/20 backdrop-blur-xl p-5 shadow-lg hover:shadow-2xl hover:-translate-y-1.5 hover:border-yellow-400/40 transition transform">
+          <div class="flex items-center justify-between">
+            <span class="text-2xl">🕵️</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-yellow-500/20 border border-yellow-400/30">Teórico</span>
+          </div>
+          <h2 class="mt-4 text-lg font-semibold text-white">Criminología</h2>
+          <span class="mt-4 inline-flex items-center text-sm text-yellow-300">Ver detalles →</span>
+        </div>
+
+        <!-- Materia 5 -->
+        <div 
+          data-nombre="informatica aplicada" 
+          data-titulo="Informática Aplicada"
+          data-tipo="Mixto" 
+          data-icono="💻"
+          data-descripcion="Uso de herramientas informáticas para la gestión de la seguridad y el análisis de datos."
+          data-materiales='[
+            {"nombre": "Manual PDF", "url": "/materiales/informatica.pdf", "icono": "📄"},
+            {"nombre": "Ejercicios", "url": "/materiales/informatica.xlsx", "icono": "📊"}
+          ]'
+          class="group cursor-pointer block rounded-2xl bg-white/10 border border-white/20 backdrop-blur-xl p-5 shadow-lg hover:shadow-2xl hover:-translate-y-1.5 hover:border-blue-400/40 transition transform">
+          <div class="flex items-center justify-between">
+            <span class="text-2xl">💻</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-blue-500/20 border border-blue-400/30">Mixto</span>
+          </div>
+          <h2 class="mt-4 text-lg font-semibold text-white">Informática Aplicada</h2>
+          <span class="mt-4 inline-flex items-center text-sm text-blue-300">Ver detalles →</span>
+        </div>
+
+        <div 
+          data-nombre="primeros auxilios" 
+          data-titulo="Primeros Auxilios"
+          data-tipo="Teórico" 
+          data-icono="⛑️"
+          data-descripcion="Brinda herramientas para la asistencia inicial ante emergencias hasta la llegada de profesionales médicos."
+          data-materiales='[
+            {"nombre": "Manual PDF", "url": "/materiales/primeros-auxilios.pdf", "icono": "📄"},
+            {"nombre": "Guía rápida", "url": "/materiales/primeros-auxilios.docx", "icono": "📝"}
+          ]'
+          class="group cursor-pointer block rounded-2xl bg-white/10 border border-white/20 backdrop-blur-xl p-5 shadow-lg hover:shadow-2xl hover:-translate-y-1.5 hover:border-rose-400/40 transition transform">
+          <div class="flex items-center justify-between">
+            <span class="text-2xl">⛑️</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-rose-500/20 border border-rose-400/30">Teórico</span>
+          </div>
+          <h2 class="mt-4 text-lg font-semibold text-white">Primeros Auxilios</h2>
+          <span class="mt-4 inline-flex items-center text-sm text-rose-300">Ver detalles →</span>
+        </div>
+
+        <div 
+          data-nombre="primeros auxilios" 
+          data-titulo="Primeros Auxilios"
+          data-tipo="Teórico" 
+          data-icono="⛑️"
+          data-descripcion="Brinda herramientas para la asistencia inicial ante emergencias hasta la llegada de profesionales médicos."
+          data-materiales='[
+            {"nombre": "Manual PDF", "url": "/materiales/primeros-auxilios.pdf", "icono": "📄"},
+            {"nombre": "Guía rápida", "url": "/materiales/primeros-auxilios.docx", "icono": "📝"}
+          ]'
+          class="group cursor-pointer block rounded-2xl bg-white/10 border border-white/20 backdrop-blur-xl p-5 shadow-lg hover:shadow-2xl hover:-translate-y-1.5 hover:border-rose-400/40 transition transform">
+          <div class="flex items-center justify-between">
+            <span class="text-2xl">⛑️</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-rose-500/20 border border-rose-400/30">Teórico</span>
+          </div>
+          <h2 class="mt-4 text-lg font-semibold text-white">Primeros Auxilios</h2>
+          <span class="mt-4 inline-flex items-center text-sm text-rose-300">Ver detalles →</span>
+        </div>
+
+        <div 
+          data-nombre="primeros auxilios" 
+          data-titulo="Primeros Auxilios"
+          data-tipo="Teórico" 
+          data-icono="⛑️"
+          data-descripcion="Brinda herramientas para la asistencia inicial ante emergencias hasta la llegada de profesionales médicos."
+          data-materiales='[
+            {"nombre": "Manual PDF", "url": "/materiales/primeros-auxilios.pdf", "icono": "📄"},
+            {"nombre": "Guía rápida", "url": "/materiales/primeros-auxilios.docx", "icono": "📝"}
+          ]'
+          class="group cursor-pointer block rounded-2xl bg-white/10 border border-white/20 backdrop-blur-xl p-5 shadow-lg hover:shadow-2xl hover:-translate-y-1.5 hover:border-rose-400/40 transition transform">
+          <div class="flex items-center justify-between">
+            <span class="text-2xl">⛑️</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-rose-500/20 border border-rose-400/30">Teórico</span>
+          </div>
+          <h2 class="mt-4 text-lg font-semibold text-white">Primeros Auxilios</h2>
+          <span class="mt-4 inline-flex items-center text-sm text-rose-300">Ver detalles →</span>
+        </div>
+
+        <div 
+          data-nombre="primeros auxilios" 
+          data-titulo="Primeros Auxilios"
+          data-tipo="Teórico" 
+          data-icono="⛑️"
+          data-descripcion="Brinda herramientas para la asistencia inicial ante emergencias hasta la llegada de profesionales médicos."
+          data-materiales='[
+            {"nombre": "Manual PDF", "url": "/materiales/primeros-auxilios.pdf", "icono": "📄"},
+            {"nombre": "Guía rápida", "url": "/materiales/primeros-auxilios.docx", "icono": "📝"}
+          ]'
+          class="group cursor-pointer block rounded-2xl bg-white/10 border border-white/20 backdrop-blur-xl p-5 shadow-lg hover:shadow-2xl hover:-translate-y-1.5 hover:border-rose-400/40 transition transform">
+          <div class="flex items-center justify-between">
+            <span class="text-2xl">⛑️</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-rose-500/20 border border-rose-400/30">Teórico</span>
+          </div>
+          <h2 class="mt-4 text-lg font-semibold text-white">Primeros Auxilios</h2>
+          <span class="mt-4 inline-flex items-center text-sm text-rose-300">Ver detalles →</span>
+        </div>
+
+        <div 
+          data-nombre="primeros auxilios" 
+          data-titulo="Primeros Auxilios"
+          data-tipo="Teórico" 
+          data-icono="⛑️"
+          data-descripcion="Brinda herramientas para la asistencia inicial ante emergencias hasta la llegada de profesionales médicos."
+          data-materiales='[
+            {"nombre": "Manual PDF", "url": "/materiales/primeros-auxilios.pdf", "icono": "📄"},
+            {"nombre": "Guía rápida", "url": "/materiales/primeros-auxilios.docx", "icono": "📝"}
+          ]'
+          class="group cursor-pointer block rounded-2xl bg-white/10 border border-white/20 backdrop-blur-xl p-5 shadow-lg hover:shadow-2xl hover:-translate-y-1.5 hover:border-rose-400/40 transition transform">
+          <div class="flex items-center justify-between">
+            <span class="text-2xl">⛑️</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-rose-500/20 border border-rose-400/30">Teórico</span>
+          </div>
+          <h2 class="mt-4 text-lg font-semibold text-white">Primeros Auxilios</h2>
+          <span class="mt-4 inline-flex items-center text-sm text-rose-300">Ver detalles →</span>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-black/30 border-t border-white/10 py-6 backdrop-blur-sm mt-auto">
+    <div class="max-w-7xl mx-auto text-center">
+      <p class="text-sm text-gray-400">© 2025 Sistema Web de Gestión — Módulo de Materias</p>
+    </div>
+  </footer>
+
+  <!-- MODAL FULLSCREEN -->
+  <div id="modal" class="fixed inset-0 hidden bg-black/95 z-50 flex flex-col">
+    <!-- Header Modal -->
+    <div class="flex justify-between items-center p-6 border-b border-white/10">
+      <div class="flex items-center gap-3">
+        <span id="modalIcono" class="text-4xl"></span>
+        <h2 id="modalTitulo" class="text-2xl font-bold text-white"></h2>
+      </div>
+      <button onclick="cerrarModal()" class="text-gray-400 hover:text-white text-3xl">&times;</button>
+    </div>
+
+    <!-- Contenido -->
+    <div class="flex-1 overflow-y-auto p-6 space-y-6">
+      <p id="modalDescripcion" class="text-gray-300 text-lg"></p>
+      <div>
+        <h3 class="text-lg font-semibold mb-3">Material de estudio:</h3>
+        <div id="modalMateriales" class="space-y-3"></div>
+      </div>
+    </div>
+
+    <!-- Footer Modal -->
+    <div class="p-6 border-t border-white/10 text-right">
+      <button onclick="cerrarModal()" class="px-5 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg text-white transition">Cerrar</button>
+    </div>
+  </div>
+
+  <script>
+    // Filtro de búsqueda
+    function filtrarMaterias(texto) {
+      const term = (texto || '').toLowerCase().trim();
+      const cards = document.querySelectorAll('#gridMaterias > div');
+      cards.forEach(card => {
+        const nombre = (card.getAttribute('data-nombre') || '').toLowerCase();
+        card.style.display = nombre.includes(term) ? '' : 'none';
+      });
+    }
+
+    // Modal
+    const modal = document.getElementById("modal");
+    const modalTitulo = document.getElementById("modalTitulo");
+    const modalIcono = document.getElementById("modalIcono");
+    const modalDescripcion = document.getElementById("modalDescripcion");
+    const modalMateriales = document.getElementById("modalMateriales");
+
+    document.querySelectorAll("#gridMaterias > div").forEach(card => {
+      card.addEventListener("click", () => {
+        modalTitulo.textContent = card.dataset.titulo;
+        modalIcono.textContent = card.dataset.icono;
+        modalDescripcion.textContent = card.dataset.descripcion;
+
+        // Renderizar materiales
+        modalMateriales.innerHTML = "";
+        const materiales = JSON.parse(card.dataset.materiales || "[]");
+        materiales.forEach(mat => {
+          const link = document.createElement("a");
+          link.href = mat.url;
+          link.download = "";
+          link.className = "block px-5 py-3 bg-cyan-500 hover:bg-cyan-600 rounded-lg text-white shadow transition text-left";
+          link.textContent = `${mat.icono} ${mat.nombre}`;
+          modalMateriales.appendChild(link);
+        });
+
+        modal.classList.remove("hidden");
+        modal.classList.remove("fade-out");
+        modal.classList.add("fade-in");
+      });
+    });
+
+    function cerrarModal() {
+      modal.classList.remove("fade-in");
+      modal.classList.add("fade-out");
+      setTimeout(() => { modal.classList.add("hidden"); }, 300);
+    }
+  </script>
+</body>
+</html>
