@@ -3,33 +3,40 @@
 <head>  
   <meta charset="UTF-8" />  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />  
-  <title>Mi Perfil - Tilwend Oscuro</title>  
-  <!-- Tailwind CDN -->  
+  <title>Mi Perfil</title>   
   <script src="https://cdn.tailwindcss.com"></script>  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />  
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />  
-  <style>  
-    /* Activar modo oscuro por defecto y respetar preferencia del usuario */  
+  <style>   
     :root { color-scheme: dark; }  
-    /* Opcional: ajustar para navegadores que no manejan dark por defecto */  
     @media (prefers-color-scheme: light) {  
       :root { color-scheme: light; }  
     }  
-
-    /* Opcional: asegurar que Tailwind aplique dark por defecto en el contenedor si lo prefieres */  
   </style>  
 </head>  
-<body class="min-h-screen bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 text-white" style="font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto;">  
-  <div class="min-h-screen flex items-center justify-center p-6">  
-    <div class="relative w-full max-w-4xl rounded-2xl overflow-hidden shadow-2xl bg-slate-900/90 border border-slate-700/70">  
-      <!-- Decoración suave -->  
-      <div class="absolute -top-8 -right-8 w-48 h-48 rounded-full bg-gradient-to-br from-indigo-600/60 to-sky-500/40 filter blur-2" aria-hidden="true"></div>  
+<body class="min-h-screen bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 text-white flex flex-col" style="font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto;">  
 
+  <!-- Navbar -->
+  <nav class="fixed top-0 left-0 w-full z-50 bg-slate-900/90 backdrop-blur-lg shadow-lg border-b border-slate-700/40">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+      <a href="#" class="flex items-center space-x-2">
+        <img src="/assets/logo.png" alt="Logo" class="h-10 w-10 rounded-full">
+     
+      </a>
+      <div class="space-x-3">
+        <a href="/views/perfiladmin.html" class="px-3 py-2 rounded-lg hover:bg-slate-800 transition">Perfil</a>
+        <a href="/views/logindivisiones.html" class="px-3 py-2 rounded-lg hover:bg-slate-800 transition">Cerrar sesión</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Contenedor principal -->
+  <main id="main-content" class="flex-1 w-full max-w-4xl mx-auto p-6 sm:p-10 mt-28 flex flex-col items-center">  
+    <div class="relative w-full rounded-2xl overflow-hidden shadow-2xl bg-slate-900/90 border border-slate-700/70">  
       <div class="p-8 md:p-10">  
         <h1 class="text-2xl md:text-3xl font-extrabold text-center text-white mb-6">Mi Perfil</h1>  
 
         <form class="grid gap-5" autocomplete="off">  
-          <!-- Usuario (no editable) -->  
           <div class="space-y-2">  
             <label class="block text-sm font-semibold text-slate-100">Usuario</label>  
             <input type="text" value="admin" disabled  
@@ -38,16 +45,47 @@
             <p class="text-xs text-slate-400">No se puede cambiar el nombre de usuario</p>  
           </div>  
 
-          <!-- Nombre completo -->  
           <div class="space-y-2">  
             <label class="block text-sm font-semibold text-slate-100">Nombre Completo</label>  
             <input type="text" placeholder="Tu nombre completo"  
                    class="w-full px-4 py-3 rounded-xl bg-slate-800 text-slate-100 border border-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500" />  
           </div>  
 
-          <!-- Email -->  
           <div class="space-y-2">  
             <label class="block text-sm font-semibold text-slate-100">Email <span class="text-slate-400">(Opcional)</span></label>  
             <input type="email" placeholder="ejemplo@correo.com"  
                    class="w-full px-4 py-3 rounded-xl bg-slate-800 text-slate-100 border border-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500" />  
           </div>  
+
+          <div class="space-y-2">
+            <label class="block text-sm font-semibold text-slate-100">Nueva Contraseña <span class="text-slate-400">(Dejar en blanco para no cambiar)</span></label>
+            <input type="password" placeholder="********"
+                   class="w-full px-4 py-3 rounded-xl bg-slate-800 text-slate-100 border border-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+          </div>
+
+          <div class="space-y-2">
+            <label class="block text-sm font-semibold text-slate-100">Confirmar Contraseña</label>
+            <input type="password" placeholder="********"
+                   class="w-full px-4 py-3 rounded-xl bg-slate-800 text-slate-100 border border-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+          </div>
+
+          <div class="pt-4">
+            <button type="submit" 
+                    class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 rounded-xl transition shadow-lg">
+              Guardar Cambios
+            </button>
+          </div>
+        </form>  
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="w-full bg-slate-900/90 backdrop-blur-lg shadow-inner border-t border-slate-700/40 mt-auto">
+    <div class="max-w-6xl mx-auto p-4 text-center text-slate-400 text-sm">
+      &copy; 2025 Aula Virtual
+    </div>
+  </footer>
+
+</body>
+</html>

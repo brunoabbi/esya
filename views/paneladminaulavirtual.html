@@ -14,9 +14,9 @@
       ⚡Administrador 
     </h1>
     <nav class="flex flex-col space-y-2">
-      <a href="#" class="px-4 py-2 rounded-lg hover:bg-gray-800">⚙️ Módulos</a>
-      <a href="#" class="px-4 py-2 rounded-lg hover:bg-gray-800">⬅️ Volver</a>
-      <a href="#" class="px-4 py-2 rounded-lg hover:bg-gray-800">🚪 Salir</a>
+      <a href="/views/modulosaulavirtual.html" class="px-4 py-2 rounded-lg hover:bg-gray-800">⚙️ Módulos</a>
+<a href="javascript:history.back()" class="px-4 py-2 rounded-lg hover:bg-gray-800">⬅️ Volver</a>
+      <a href="/views/logindivisiones.html" class="px-4 py-2 rounded-lg hover:bg-gray-800">🚪 Salir</a>
     </nav>
   </aside>
 
@@ -60,39 +60,36 @@
         </form>
       </section>
 
-      <!-- TABLA (solo en PC) -->
-      <section class="hidden md:block rounded-xl border border-gray-700 bg-gray-800/50 shadow-lg">
-        <h3 class="text-lg font-semibold p-4">📋 Tabla de Usuarios</h3>
-        <div class="overflow-x-auto">
-          <table class="w-full text-sm min-w-[600px]">
-            <thead class="bg-gray-900/80 text-gray-300 uppercase">
-              <tr>
-                <th class="p-3">Usuario</th>
-                <th class="p-3">Nombre</th>
-                <th class="p-3">Email</th>
-                <th class="p-3">Teléfono</th>
-                <th class="p-3">Turno</th>
-                <th class="p-3">Comisión</th>
-                <th class="p-3">Rol</th>
-                <th class="p-3">Acciones</th>
-              </tr>
-            </thead>
-            <tbody id="tablaUsuarios" class="divide-y divide-gray-700"></tbody>
-          </table>
-        </div>
-      </section>
 
-
-
+     
+<!-- TABLA (solo en PC) -->
+<section class="hidden md:block rounded-xl border border-gray-700 bg-gray-800/50 shadow-lg">
+  <h3 class="text-lg font-semibold p-4 text-center">📋 Tabla de Usuarios</h3>
+  <div class="overflow-x-auto">
+    <table class="w-full text-sm min-w-[700px]">
+      <thead class="bg-gray-900/80 text-gray-300 uppercase">
+        <tr class="text-center">
       
-      <!-- CARDS (solo en móvil) -->
-      <section class="block md:hidden">
-        <h3 class="text-lg font-semibold mb-4">📱 Vista en Cards</h3>
-        <div id="cardsUsuarios" class="grid gap-4 sm:grid-cols-2"></div>
-      </section>
-
-    </main>
+          <th class="p-3">Nombre</th>
+          <th class="p-3">DNI</th>
+          <th class="p-3">Teléfono</th>
+          <th class="p-3">Turno</th>
+          <th class="p-3">Comisión</th>
+          <th class="p-3">Rol</th>
+           <th class="p-3">+Info</th>
+        </tr>
+      </thead>
+      <tbody id="tablaUsuarios" class="divide-y divide-gray-700 text-center"></tbody>
+    </table>
   </div>
+</section>
+
+<!-- CARDS (solo en móvil) -->
+<section class="block md:hidden">
+  <h3 class="text-lg font-semibold mb-4 text-center">📱 Vista en Cards</h3>
+  <div id="cardsUsuarios" class="grid gap-4 sm:grid-cols-2"></div>
+</section>
+
 
   <!-- MODAL CONFIRMACIÓN -->
   <div id="modalEliminar" class="hidden fixed inset-0 bg-black/60 flex items-center justify-center z-50">
@@ -110,58 +107,58 @@
   <script>
     // ARRAY DE USUARIOS
     const usuarios = [
-      { usuario: "lucaselias", nombre: "Lucas Elias", email: "lucaselias2115@gmail.com", telefono: "3815985387", turno: "Tarde", comision: "A", rol: "Alumno" },
-      { usuario: "admin", nombre: "Administrador Principal", email: "admin@escuela.com", telefono: "1122334455", turno: "Mañana", comision: "B", rol: "Admin" },
-      { usuario: "profesor", nombre: "Profesor Ejemplo", email: "profesor@escuela.com", telefono: "1144556677", turno: "Tarde", comision: "B", rol: "Profesor" },
-      { usuario: "alumno", nombre: "Alumno Ejemplo", email: "alumno@escuela.com", telefono: "1155667788", turno: "Mañana", comision: "C", rol: "Alumno" },
-    ];
+    { nombre: "Lucas Elias", dni: "42547976", telefono: "42355921", turno: "Mañana", comision: "C", rol: "Profesor" },
+    { nombre: "Carlos Pérez", dni: "43963344", telefono: "42111222", turno: "Tarde", comision: "C", rol: "Cursante" }
+  ];
 
+  function renderUsuarios() {
     const tabla = document.getElementById("tablaUsuarios");
-    const cards = document.getElementById("cardsUsuarios");
-    const modal = document.getElementById("modalEliminar");
-    const btnCancelar = document.getElementById("cancelarEliminar");
-    const btnConfirmar = document.getElementById("confirmarEliminar");
+    const cardsContainer = document.getElementById("cardsUsuarios");
 
-    let usuarioAEliminar = null;
+    tabla.innerHTML = "";
+    cardsContainer.innerHTML = "";
 
-    function renderUsuarios() {
-      tabla.innerHTML = "";
-      cards.innerHTML = "";
+    usuarios.forEach(u => {
+      // --- Tabla (PC) ---
+      const tr = document.createElement("tr");
+      tr.className = "hover:bg-gray-700/50 transition";
 
-      usuarios.forEach((u, index) => {
-        // TABLA
-        tabla.innerHTML += `
-          <tr class="hover:bg-gray-700/40">
-            <td class="p-3">${u.usuario}</td>
-            <td class="p-3">${u.nombre}</td>
-            <td class="p-3">${u.email}</td>
-            <td class="p-3">${u.telefono}</td>
-            <td class="p-3">${u.turno}</td>
-            <td class="p-3">${u.comision}</td>
-            <td class="p-3">${u.rol}</td>
-            <td class="p-3">
-              <button onclick="abrirModal(${index})" class="px-3 py-1 text-xs rounded-lg bg-red-600 hover:bg-red-700">Eliminar</button>
-            </td>
-          </tr>
-        `;
+      tr.innerHTML = `
+        <td class="p-3">${u.nombre}</td>
+        <td class="p-3">${u.dni}</td>
+        <td class="p-3">${u.telefono}</td>
+        <td class="p-3">${u.turno}</td>
+        <td class="p-3">${u.comision}</td>
+        <td class="p-3">${u.rol}</td>
+        <td class="p-3">
+          <a href="detalleUsuario.html?usuario=${u.usuario}" class="px-3 py-1 bg-cyan-600 hover:bg-cyan-700 rounded-lg text-white">Ver más</a>
+        </td>
+      `;
+      tabla.appendChild(tr);
 
-        // CARDS
-        cards.innerHTML += `
-          <div class="p-4 rounded-xl bg-gray-800 border border-gray-700 shadow-md hover:shadow-xl transition">
-            <h4 class="font-bold text-cyan-400">${u.nombre}</h4>
-            <p class="text-sm text-gray-300">@${u.usuario}</p>
-            <p class="text-sm text-gray-400">${u.email}</p>
-            <p class="text-sm text-gray-400">📞 ${u.telefono}</p>
-            <div class="flex justify-between items-center mt-3">
-              <span class="text-xs bg-gray-900 px-2 py-1 rounded-lg">${u.turno} - ${u.comision}</span>
-              <span class="text-xs px-2 py-1 rounded-lg ${u.rol === "Admin" ? "bg-red-500" : u.rol === "Profesor" ? "bg-blue-500" : "bg-green-500"}">${u.rol}</span>
-            </div>
-            <button onclick="abrirModal(${index})" class="mt-3 w-full px-3 py-1 text-xs rounded-lg bg-red-600 hover:bg-red-700">Eliminar</button>
-          </div>
-        `;
-      });
-    }
+      // --- Cards (móvil) ---
+      const card = document.createElement("div");
+      card.className = "p-4 rounded-xl bg-gray-800/60 border border-gray-700 shadow-md flex flex-col";
 
+      card.innerHTML = `
+        <p><strong>Nombre:</strong> ${u.nombre}</p>
+        <p><strong>Email:</strong> ${u.email}</p>
+        <p><strong>Teléfono:</strong> ${u.telefono}</p>
+        <p><strong>Turno:</strong> ${u.turno}</p>
+        <p><strong>Comisión:</strong> ${u.comision}</p>
+        <p><strong>Rol:</strong> ${u.rol}</p>
+        <a href="detalleUsuario.html?usuario=${u.usuario}" 
+           class="mt-3 px-3 py-2 bg-cyan-600 hover:bg-cyan-700 text-center rounded-lg text-white">
+           Ver más
+        </a>
+      `;
+
+      cardsContainer.appendChild(card);
+    });
+  }
+
+  // Renderizar al cargar
+  renderUsuarios();
     // ABRIR MODAL
     function abrirModal(index) {
       usuarioAEliminar = index;
@@ -190,6 +187,8 @@
     document.getElementById("menuBtn").addEventListener("click", () => {
       sidebar.classList.toggle("-translate-x-full");
     });
+
+
   </script>
 </body>
 </html>

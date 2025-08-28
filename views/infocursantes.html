@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Editar Aspirante - Moderno</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'Inter', sans-serif; }
+  .card { transition: transform 0.3s, background 0.3s; }
+  .card:hover { transform: translateY(-4px); background: rgba(255,255,255,0.1); }
+  input, textarea {
+    transition: all 0.3s;
+    backdrop-filter: blur(6px);
+    background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: #fff;
+  }
+  input:focus, textarea:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59,130,246,0.4);
+    outline: none;
+    background: rgba(255,255,255,0.25);
+  }
+  /* Modal estilos */
+  .modal-bg {
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(4px);
+    transition: opacity 0.3s;
+  }
+</style>
+</head>
+<body class="bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 min-h-screen flex flex-col">
+
+<!-- NAVBAR -->
+<header class="w-full bg-slate-900/80 backdrop-blur-md border-b border-slate-700 shadow-md">
+  <div class="max-w-7xl mx-auto flex items-center justify-between p-4">
+    <div class="flex items-center gap-3">
+      <img src="/assets/logo.png" alt="Logo" class="w-10 h-10 rounded-full">
+      <span class="text-white font-bold text-xl tracking-wide"></span>
+    </div>
+    <nav class="hidden md:flex gap-6">
+    </nav>
+  </div>
+</header>
+
+<!-- CONTENIDO PRINCIPAL -->
+<main class="flex-grow flex items-center justify-center p-6">
+  <div class="w-full max-w-5xl backdrop-blur-lg bg-white/10 border border-white/20 rounded-3xl shadow-2xl p-10">
+    <a href="#" class="inline-block mb-6 text-blue-300 hover:text-white font-medium transition flex items-center">← Volver al listado</a>
+    <h1 class="text-4xl font-bold mb-10 text-white text-center tracking-wide">Legajo del Cursante</h1>
+
+    <div id="datosAspirante" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Campos -->
+      <div class="p-4 rounded-2xl shadow-md card" data-field="dni">
+        <p class="text-sm text-blue-200 font-semibold">DNI</p>
+        <p class="text-white text-lg mt-1">43706634</p>
+      </div>
+      <div class="p-4 rounded-2xl shadow-md card" data-field="nombre">
+        <p class="text-sm text-blue-200 font-semibold">Nombre</p>
+        <p class="text-white text-lg mt-1">Sebastian Eduardo</p>
+      </div>
+      <div class="p-4 rounded-2xl shadow-md card" data-field="apellido">
+        <p class="text-sm text-blue-200 font-semibold">Apellido</p>
+        <p class="text-white text-lg mt-1">Ortega</p>
+      </div>
+      <div class="p-4 rounded-2xl shadow-md card" data-field="fecha_nacimiento">
+        <p class="text-sm text-blue-200 font-semibold">Fecha de Nacimiento</p>
+        <p class="text-white text-lg mt-1">04/04/2002</p>
+      </div>
+      <div class="p-4 rounded-2xl shadow-md card" data-field="fecha_ingreso">
+        <p class="text-sm text-blue-200 font-semibold">Fecha de Ingreso</p>
+        <p class="text-white text-lg mt-1">03/02/2025</p>
+      </div>
+      <div class="p-4 rounded-2xl shadow-md card" data-field="estado">
+        <p class="text-sm text-blue-200 font-semibold">Estado</p>
+        <p class="text-white text-lg mt-1">Activo</p>
+      </div>
+      <div class="p-4 rounded-2xl shadow-md card" data-field="comision">
+        <p class="text-sm text-blue-200 font-semibold">Comisión</p>
+        <p class="text-white text-lg mt-1">Comisión E</p>
+      </div>
+      <div class="p-4 rounded-2xl shadow-md card" data-field="domicilio">
+        <p class="text-sm text-blue-200 font-semibold">Domicilio</p>
+        <p class="text-white text-lg mt-1">Pasaje San José 2369, San Miguel de Tucumán, Tucumán</p>
+      </div>
+      <div class="p-4 rounded-2xl shadow-md card" data-field="telefono">
+        <p class="text-sm text-blue-200 font-semibold">Teléfono</p>
+        <p class="text-white text-lg mt-1">3814025001</p>
+      </div>
+      <div class="p-4 rounded-2xl shadow-md card" data-field="email">
+        <p class="text-sm text-blue-200 font-semibold">Email</p>
+        <p class="text-white text-lg mt-1">sebaortegaa8@gmail.com</p>
+      </div>
+      <div class="p-4 rounded-2xl shadow-md card" data-field="lugar_nacimiento">
+        <p class="text-sm text-blue-200 font-semibold">Lugar de Nacimiento</p>
+        <p class="text-white text-lg mt-1">San Miguel de Tucumán, Tucumán</p>
+      </div>
+      <div class="p-4 rounded-2xl shadow-md card" data-field="estado_civil">
+        <p class="text-sm text-blue-200 font-semibold">Estado Civil</p>
+        <p class="text-white text-lg mt-1">Soltero/a</p>
+      </div>
+      <div class="p-4 rounded-2xl shadow-md card" data-field="nivel_educativo">
+        <p class="text-sm text-blue-200 font-semibold">Nivel Educativo</p>
+        <p class="text-white text-lg mt-1">Secundario</p>
+      </div>
+      <div class="p-4 md:col-span-2 rounded-2xl shadow-md card" data-field="observaciones">
+        <p class="text-sm text-blue-200 font-semibold">Observaciones</p>
+        <p class="text-white text-lg mt-1">ART</p>
+      </div>
+    </div>
+
+    <div class="flex flex-col md:flex-row justify-center md:justify-between gap-6 mt-12">
+      <button id="editarBtn" class="bg-blue-500 hover:bg-blue-600 transition text-white font-semibold py-3 px-10 rounded-2xl shadow-xl">
+        Actualizar Aspirante
+      </button>
+      <button id="cancelarBtn" class="bg-gray-700 hover:bg-gray-800 transition text-white font-semibold py-3 px-10 rounded-2xl shadow-xl">
+        Cancelar
+      </button>
+    </div>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="w-full bg-slate-900/80 backdrop-blur-md border-t border-slate-700 shadow-inner mt-auto">
+  <div class="max-w-7xl mx-auto p-4 text-center text-gray-400">
+    © 2025 Mi Aula Virtual. Todos los derechos reservados.
+  </div>
+</footer>
+
+<!-- Modal -->
+<div id="modal" class="fixed inset-0 flex items-center justify-center opacity-0 pointer-events-none transition-opacity z-50">
+  <div class="modal-bg absolute inset-0"></div>
+  <div class="bg-slate-800 rounded-xl shadow-2xl p-8 relative z-10 w-80 text-center">
+    <h2 class="text-2xl font-semibold text-white mb-4">✅ Cambios Guardados</h2>
+    <p class="text-gray-300 mb-6">Los datos del aspirante se han actualizado correctamente.</p>
+    <button id="cerrarModal" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-xl font-medium transition">Cerrar</button>
+  </div>
+</div>
+
+<script>
+  const editarBtn = document.getElementById('editarBtn');
+  const cancelarBtn = document.getElementById('cancelarBtn');
+  const datos = document.querySelectorAll('#datosAspirante [data-field]');
+
+  const modal = document.getElementById('modal');
+  const cerrarModal = document.getElementById('cerrarModal');
+
+  const valoresOriginales = {};
+  datos.forEach(d => valoresOriginales[d.dataset.field] = d.querySelector('p:nth-child(2)').innerText);
+
+  let editando = false;
+
+  function mostrarModal() {
+    modal.classList.remove('opacity-0', 'pointer-events-none');
+    modal.classList.add('opacity-100');
+    setTimeout(() => {
+      modal.classList.add('opacity-0', 'pointer-events-none');
+      modal.classList.remove('opacity-100');
+    }, 3000);
+  }
+
+  editarBtn.addEventListener('click', () => {
+    if (!editando) {
+      datos.forEach(d => {
+        const valor = d.querySelector('p:nth-child(2)').innerText;
+        const textareaFields = ['observaciones', 'domicilio'];
+        if (textareaFields.includes(d.dataset.field)) {
+          d.querySelector('p:nth-child(2)').outerHTML = `<textarea class="w-full mt-1 p-2 rounded-md text-white placeholder-blue-200" placeholder="Ingrese texto">${valor}</textarea>`;
+        } else {
+          d.querySelector('p:nth-child(2)').outerHTML = `<input type="text" class="w-full mt-1 p-2 rounded-md text-white placeholder-blue-200" value="${valor}">`;
+        }
+      });
+      editarBtn.innerText = 'Guardar Cambios';
+      editando = true;
+    } else {
+      datos.forEach(d => {
+        const input = d.querySelector('input, textarea');
+        d.querySelector('input, textarea').outerHTML = `<p class="text-white text-lg mt-1">${input.value}</p>`;
+        valoresOriginales[d.dataset.field] = input.value;
+      });
+      editarBtn.innerText = 'Actualizar Aspirante';
+      editando = false;
+      mostrarModal();
+    }
+  });
+
+  cancelarBtn.addEventListener('click', () => {
+    datos.forEach(d => {
+      const editable = d.querySelector('input, textarea');
+      if (editable) editable.outerHTML = `<p class="text-white text-lg mt-1">${valoresOriginales[d.dataset.field]}</p>`;
+    });
+    editarBtn.innerText = 'Actualizar Aspirante';
+    editando = false;
+  });
+
+  cerrarModal.addEventListener('click', () => {
+    modal.classList.add('opacity-0', 'pointer-events-none');
+    modal.classList.remove('opacity-100');
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Asistencia</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-gray-950 via-gray-900 to-gray-800 text-gray-100 min-h-screen font-sans flex flex-col">
+
+  <!-- Navbar -->
+<nav id="navbar" class="fixed top-0 left-0 w-full z-50 bg-gray-900/90 backdrop-blur-lg shadow-lg border-b border-gray-700/40">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+    <a href="#" class="flex items-center space-x-2">
+      <img src="/assets/logo.png" alt="Logo" class="h-10 w-10">
+    </a>
+    <div class="space-x-2 sm:space-x-4">
+      <a href="/views/perfiladmin.html" class="px-3 py-2 sm:px-4 sm:py-2 rounded-lg hover:bg-gray-800 transition text-sm sm:text-base">Perfil</a>
+      <a href="#" class="px-3 py-2 sm:px-4 sm:py-2 rounded-lg hover:bg-gray-800 transition text-sm sm:text-base">Volver</a>
+    </div>
+  </div>
+</nav>
+
+  <!-- Contenedor principal -->
+<main id="main-content" class="flex-1 w-full max-w-6xl mx-auto p-4 sm:p-8 flex flex-col items-center mt-20">
+
+    <div class="w-full bg-gray-900/70 backdrop-blur-lg rounded-3xl shadow-2xl p-4 sm:p-8 border border-gray-700/40">
+
+      <!-- Encabezado -->
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-center mb-8 sm:mb-10 tracking-wide text-gray-100 drop-shadow-lg">
+      Registro de Asistencia
+      </h1>
+
+      <!-- Filtros Comisión y Fecha -->
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-6 mb-6 sm:mb-10">
+        <div class="flex items-center gap-2 sm:gap-3">
+          <label for="comision" class="font-semibold text-gray-300 text-sm sm:text-base">Comisión:</label>
+          <select id="comision" class="px-4 py-2 sm:px-5 sm:py-3 rounded-xl bg-gray-800 border border-gray-700 focus:ring-2 focus:ring-indigo-500 focus:outline-none transition text-sm sm:text-base">
+            <option value="A">Comisión A</option>
+            <option value="B">Comisión B</option>
+            <option value="C">Comisión C</option>
+            <option value="D">Comisión D</option>
+            <option value="E">Comisión E</option>
+            <option value="F">Comisión F</option>
+          </select>
+        </div>
+        <div class="flex items-center gap-2 sm:gap-3">
+          <label for="fecha" class="font-semibold text-gray-300 text-sm sm:text-base">Fecha:</label>
+          <input type="date" id="fecha" value="2025-08-28" class="px-4 py-2 sm:px-5 sm:py-3 rounded-xl bg-gray-800 border border-gray-700 focus:ring-2 focus:ring-indigo-500 focus:outline-none transition text-sm sm:text-base" />
+        </div>
+      </div>
+
+      <!-- Info resumen -->
+      <div id="resumen" class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-10">
+        <div class="bg-gray-800/50 rounded-2xl p-4 sm:p-6 text-center border border-gray-700/30 shadow-md hover:shadow-lg transition">
+          <p class="text-sm sm:text-lg font-medium text-gray-300">Total</p>
+          <p id="total" class="text-2xl sm:text-3xl font-bold text-indigo-400">0</p>
+        </div>
+        <div class="bg-gray-800/50 rounded-2xl p-4 sm:p-6 text-center border border-gray-700/30 shadow-md hover:shadow-lg transition">
+          <p class="text-sm sm:text-lg font-medium text-gray-300">Presentes</p>
+          <p id="presentes" class="text-2xl sm:text-3xl font-bold text-green-400">0</p>
+        </div>
+        <div class="bg-gray-800/50 rounded-2xl p-4 sm:p-6 text-center border border-gray-700/30 shadow-md hover:shadow-lg transition">
+          <p class="text-sm sm:text-lg font-medium text-gray-300">Ausentes</p>
+          <p id="ausentes" class="text-2xl sm:text-3xl font-bold text-red-400">0</p>
+        </div>
+      </div>
+
+      <!-- Título dinámico -->
+      <h2 id="titulo" class="text-lg sm:text-2xl font-semibold text-center mb-4 sm:mb-6 text-gray-200"></h2>
+
+      <!-- Botones seleccionar -->
+      <div class="flex flex-col sm:flex-row justify-center sm:justify-end gap-2 sm:gap-4 mb-4 sm:mb-6">
+        <button onclick="seleccionarTodos(true)" class="px-4 py-2 sm:px-5 sm:py-2 rounded-xl bg-green-600 hover:bg-green-700 font-semibold shadow-md transition transform hover:scale-105 text-sm sm:text-base">✓ Seleccionar Todos</button>
+        <button onclick="seleccionarTodos(false)" class="px-4 py-2 sm:px-5 sm:py-2 rounded-xl bg-red-600 hover:bg-red-700 font-semibold shadow-md transition transform hover:scale-105 text-sm sm:text-base">✗ Deseleccionar Todos</button>
+      </div>
+
+      <!-- Tabla aspirantes -->
+      <div class="overflow-x-auto rounded-2xl border border-gray-700 shadow-inner">
+        <table class="w-full text-left border-collapse text-sm sm:text-base">
+          <thead>
+            <tr class="bg-gray-800 text-indigo-300 uppercase tracking-wider">
+              <th class="p-3 sm:p-4">Presente</th>
+              <th class="p-3 sm:p-4">Aspirante</th>
+              <th class="p-3 sm:p-4">Estado</th>
+              <th class="p-3 sm:p-4">Observaciones</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-aspirantes" class="divide-y divide-gray-700 bg-gray-900/50"></tbody>
+        </table>
+      </div>
+
+      <!-- Botón Registrar -->
+      <div class="flex justify-center mt-6 sm:mt-10">
+        <button onclick="registrarAsistencia()" class="px-8 sm:px-10 py-3 sm:py-4 rounded-2xl bg-blue-700 hover:bg-blue-700 font-bold shadow-lg text-base sm:text-lg transition transform hover:scale-105">
+          Registrar Asistencia
+        </button>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900/90 backdrop-blur-lg shadow-inner border-t border-gray-700/40 mt-8 sm:mt-10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 text-center text-gray-400 text-xs sm:text-sm">
+      © 2025 Aula Virtual • Todos los derechos reservados • Diseño moderno con Tailwind CSS
+    </div>
+  </footer>
+
+  <!-- Modal -->
+  <div id="modal" class="fixed inset-0 bg-black/50 flex items-center justify-center hidden z-50">
+    <div class="bg-black rounded-2xl p-6 sm:p-8 max-w-sm w-full text-center shadow-2xl border border-gray-700/40">
+      <h3 class="text-xl sm:text-2xl font-bold text-white mb-4">✅ Asistencia Registrada Correctamente</h3>
+      <button onclick="cerrarModal()" class="mt-4 px-5 py-2 sm:px-6 sm:py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 font-semibold shadow-md transition text-sm sm:text-base">Cerrar</button>
+    </div>
+  </div>
+
+  <script>
+    const aspirantesPorComision = {
+      "A": [ { nombre: "Elias, Lucas Serafín", dni: "42355921" }, { nombre: "Pérez, Carlos Alberto", dni: "42111222" } ],
+      "B": [ { nombre: "Gómez, Ana María", dni: "39888999" }, { nombre: "Fernández, Diego", dni: "40222333" } ],
+      "C": [ { nombre: "Martínez, Sofía", dni: "38877665" }, { nombre: "Ramírez, Juan", dni: "37766554" } ],
+      "D": [ { nombre: "Gómez, Ana María", dni: "39888999" }, { nombre: "Fernández, Diego", dni: "40222333" } ],
+      "E": [ { nombre: "Gómez, Ana María", dni: "39888999" }, { nombre: "Fernández, Diego", dni: "40222333" } ],
+      "F": [ { nombre: "Gómez, Ana María", dni: "39888999" }, { nombre: "Fernández, Diego", dni: "40222333" } ],
+    };
+
+    const comisionSelect = document.getElementById("comision");
+    const fechaInput = document.getElementById("fecha");
+    const titulo = document.getElementById("titulo");
+    const tabla = document.getElementById("tabla-aspirantes");
+    const total = document.getElementById("total");
+    const presentes = document.getElementById("presentes");
+    const ausentes = document.getElementById("ausentes");
+
+    function cargarAspirantes() {
+      const comision = comisionSelect.value;
+      const fecha = fechaInput.value;
+      const aspirantes = aspirantesPorComision[comision] || [];
+      titulo.textContent = `Lista de Aspirantes — Comisión ${comision} — ${fecha}`;
+      tabla.innerHTML = aspirantes.map((a, index) => `
+        <tr class="hover:bg-gray-800/40 transition">
+          <td class="p-2 sm:p-4 text-center">
+            <input type="checkbox" class="presente w-4 h-4 sm:w-5 sm:h-5 accent-indigo-500" data-index="${index}" checked />
+          </td>
+          <td class="p-2 sm:p-4 font-medium text-gray-200">${a.nombre} <span class="text-gray-400 text-xs sm:text-sm">(${a.dni})</span></td>
+          <td class="p-2 sm:p-4 estado text-xs sm:text-sm text-gray-400">Sin registrar</td>
+          <td class="p-2 sm:p-4">
+            <textarea class="observacion w-full px-2 py-1 sm:px-3 sm:py-2 rounded-lg bg-gray-800 border border-gray-700 focus:ring-2 focus:ring-indigo-500 text-xs sm:text-sm placeholder-gray-500" placeholder="Escribir observaciones..."></textarea>
+          </td>
+        </tr>
+      `).join("");
+      actualizarResumen();
+      document.querySelectorAll(".presente").forEach(chk => { chk.addEventListener("change", actualizarResumen); });
+    }
+
+    function actualizarResumen() {
+  const checks = document.querySelectorAll(".presente");
+  let totalCount = checks.length;
+  let presentesCount = 0;
+
+  checks.forEach(chk => {
+    const estadoCell = chk.closest("tr").querySelector(".estado");
+    if(chk.checked) {
+      presentesCount++;
+      estadoCell.textContent = "Presente";
+      estadoCell.classList.remove("text-red-400");
+      estadoCell.classList.add("text-green-400");
+    } else {
+      estadoCell.textContent = "Ausente";
+      estadoCell.classList.remove("text-green-400");
+      estadoCell.classList.add("text-red-400");
+    }
+  });
+
+  let ausentesCount = totalCount - presentesCount;
+
+  total.textContent = totalCount;
+  presentes.textContent = presentesCount;
+  ausentes.textContent = ausentesCount;
+}
+
+    function seleccionarTodos(valor) {
+      document.querySelectorAll(".presente").forEach(chk => { chk.checked = valor; });
+      actualizarResumen();
+    }
+
+    function registrarAsistencia() {
+      const comision = comisionSelect.value;
+      const fecha = fechaInput.value;
+      const datos = [];
+      document.querySelectorAll("#tabla-aspirantes tr").forEach((row, i) => {
+        const presente = row.querySelector(".presente").checked;
+        const nombre = row.children[1].innerText;
+        const observacion = row.querySelector(".observacion").value;
+        datos.push({ nombre, presente, observacion });
+      });
+      document.getElementById("modal").classList.remove("hidden");
+      setTimeout(() => cerrarModal(), 3000);
+      console.log(`Asistencia registrada:\nComisión ${comision} - ${fecha}`, datos);
+    }
+
+    function cerrarModal() {
+      document.getElementById("modal").classList.add("hidden");
+    }
+
+    comisionSelect.addEventListener("change", cargarAspirantes);
+    fechaInput.addEventListener("change", cargarAspirantes);
+    cargarAspirantes();
+  </script>
+
+</body>
+</html>
