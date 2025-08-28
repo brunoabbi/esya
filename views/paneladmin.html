@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel Administrador</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      padding-top: 4rem;
+      background-image: linear-gradient(to bottom right, #0A0E1A, #1A1F30, #0A0E1A);
+      background-attachment: fixed;
+    }
+
+    .btn-outline-alt {
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 1;
+      padding: 14px 36px;
+      border-radius: 9999px;
+      font-weight: 600;
+      font-size: 1.125rem;
+      color: #0000008a; /* Color de texto base */
+      border: 2px solid transparent; /* Borde transparente para el efecto */
+      background-image: linear-gradient(to right, #c2c3ff, #c5c5c5);
+      background-origin: border-box;
+      background-clip: padding-box, border-box;
+    }
+
+    .btn-outline-alt:hover {
+      color: #ffffff; /* Color de texto del hover */
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(255, 255, 255, 0.4);
+      background-image: linear-gradient(to right, #2339ff93, #5d75ff54);
+      background-clip: border-box;
+    }
+
+    .text-gradient-alt {
+      
+      -webkit-text-fill-color: white;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+<nav class="fixed top-0 left-0 w-full z-50 bg-gray-900/30 backdrop-blur-xl shadow-xl border-b border-blue-700/30">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+
+      <div class="flex items-center">
+        <a href="#" class="flex items-center space-x-2">
+          <img src="/assets/logo.png" alt="Logo" class="h-10 w-10  ">
+          
+        </a>
+      </div>
+
+      <div class="hidden md:flex space-x-6">
+
+    
+      </div>
+
+      <div class="hidden md:flex items-center space-x-3 relative group">
+        <div class="w-10 h-10 rounded-full bg-violet-600 flex items-center justify-center font-bold text-white cursor-pointer text-base shadow-md ring-2 ring-violet-400 ring-offset-2 ring-offset-[#0A0E1A]">
+          AD
+        </div>
+        <span class="text-gray-200 font-medium">Admin User</span>
+
+        <div class="absolute right-0 mt-2 top-full w-48 bg-gray-800 rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-2 border border-gray-700 z-10">
+          <a href="/views/perfiladmin.html" class="block px-4 py-2 text-gray-200 hover:bg-violet-700/50 rounded-t-lg transition-colors duration-200">
+            <i class="fas fa-user-circle mr-2"></i> Perfil
+          </a>
+          <a href="#" class="block px-4 py-2 text-gray-200 hover:bg-violet-700/50 rounded-b-lg transition-colors duration-200">
+            <i class="fas fa-sign-out-alt mr-2"></i> Cerrar sesión
+          </a>
+        </div>
+      </div>
+
+      <div class="md:hidden flex items-center">
+        <button id="menu-btn" class="text-gray-100 text-2xl focus:outline-none hover:text-white transition-colors">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="hidden md:hidden bg-gray-900/60 backdrop-blur-xl rounded-b-lg shadow-lg absolute w-full left-0 border-t border-blue-700/30">
+    <a href="#" class="block px-4 py-3 text-gray-100 hover:bg-blue-700/40 transition-colors flex items-center gap-2"><i class="fas fa-home"></i> Inicio</a>
+    <a href="#" class="block px-4 py-3 text-gray-100 hover:bg-blue-700/40 transition-colors flex items-center gap-2"><i class="fas fa-user-friends"></i> Aspirantes</a>
+    <a href="#" class="block px-4 py-3 text-gray-100 hover:bg-violet-700/40 transition-colors flex items-center gap-2"><i class="fas fa-clipboard-list"></i> Asistencia</a>
+    <a href="#" class="block px-4 py-3 text-gray-100 hover:bg-violet-700/40 transition-colors flex items-center gap-2"><i class="fas fa-book"></i> Materias</a>
+
+    <div class="border-t border-gray-700/50 mt-2 pt-2">
+      <div class="flex items-center px-4 py-3 space-x-3">
+        <div class="w-9 h-9 rounded-full bg-violet-300 flex items-center justify-center font-bold text-violet-900 text-sm">AD</div>
+        <span class="text-gray-100 font-medium">Admin User</span>
+      </div>
+      <a href="/views/perfiladmin.html" class="block px-4 py-3 text-gray-100 hover:bg-violet-700/40 transition-colors">Perfil</a>
+      <a href="/views/incioaulavirtual.html" class="block px-4 py-3 text-gray-100 hover:bg-violet-700/40 transition-colors">Cerrar sesión</a>
+    </div>
+  </div>
+</nav>
+
+<main class="flex flex-col items-center justify-center p-4 sm:p-6 lg:p-8 pt-20 flex-1">
+    <div class="bg-white/5 backdrop-blur-xl rounded-4xl p-6 sm:p-10 md:p-12 max-w-5xl w-full text-center shadow-3xl border border-blue-500/20 transform transition-all duration-500 ease-in-out hover:scale-[1.01] hover:shadow-blue-500/20">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-3 leading-tight drop-shadow-lg">
+            ¡Bienvenido, <span class="text-gradient-alt">Administrador</span>!
+        </h1>
+        <p class="text-base md:text-xl text-gray-300 mb-5 max-w-2xl mx-auto font-light">
+            Tu centro de mando te espera. Desde aquí, podrás gestionar usuarios, monitorear estadísticas vitales y controlar el sistema con total eficiencia.
+        </p>
+    </div>
+
+    <div class="w-full max-w-6xl mt-10 md:mt-20 px-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-16">
+        
+        <div class="bg-white/5 backdrop-blur-xl rounded-4xl p-6 shadow-2xl border border-sky-500/20 flex flex-col items-center text-center transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-sky-500/30">
+          <div class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold text-sky-400 drop-shadow-lg mb-2" data-target="6">0</div>
+          <h2 class="text-xl sm:text-2xl font-semibold text-gray-100 mt-2">Total Aspirantes</h2>
+          <p class="text-xs sm:text-sm text-gray-400 mt-1">Registro completo de candidatos</p>
+        </div>
+
+        <div class="bg-white/5 backdrop-blur-xl rounded-4xl p-6 shadow-2xl border border-violet-500/20 flex flex-col items-center text-center transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-violet-500/30">
+          <div class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold text-violet-400 drop-shadow-lg mb-2" data-target="6">0</div>
+          <h2 class="text-xl sm:text-2xl font-semibold text-gray-100 mt-2">Aspirantes Activos</h2>
+          <p class="text-xs sm:text-sm text-gray-400 mt-1">Candidatos en formación</p>
+        </div>
+
+        <div class="bg-white/5 backdrop-blur-xl rounded-4xl p-6 shadow-2xl border border-green-500/20 flex flex-col items-center text-center transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-green-500/30">
+          <div class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold text-green-400 drop-shadow-lg mb-2" data-target="4">0</div>
+          <h2 class="text-xl sm:text-2xl font-semibold text-gray-100 mt-2">Asistencias Hoy</h2>
+          <p class="text-xs sm:text-sm text-gray-400 mt-1">Registros de asistencia</p>
+        </div>
+
+      </div>
+    </div>
+  
+    <div class="w-full max-w-6xl mt-10 md:mt-20 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-16">
+      
+      <div class="bg-white/5 backdrop-blur-xl rounded-4xl p-6 sm:p-10 shadow-2xl border border-blue-500/20 flex flex-col items-center text-center transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-blue-500/30">
+          <i class="fas fa-user-graduate text-5xl sm:text-6xl md:text-7xl text-sky-400 drop-shadow-lg mb-4 md:mb-6"></i>
+          <h2 class="text-2xl md:text-3xl font-bold text-white mb-3">Aspirantes</h2>
+          <p class="text-sm md:text-base text-gray-300 mb-6 flex-1 leading-relaxed">Gestiona integralmente a los aspirantes: desde su registro hasta el seguimiento de su progreso académico y sus datos personales.</p>
+          <a href="/views/panelcursantes.html" class="btn-outline-alt text-lg">
+            Acceder al Módulo
+          </a>
+      </div>
+  
+      <div class="bg-white/5 backdrop-blur-xl rounded-4xl p-6 sm:p-10 shadow-2xl border border-violet-500/20 flex flex-col items-center text-center transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-violet-500/30">
+          <i class="fas fa-clipboard-check text-5xl sm:text-6xl md:text-7xl text-violet-400 drop-shadow-lg mb-4 md:mb-6"></i>
+          <h2 class="text-2xl md:text-3xl font-bold text-white mb-3">Control de Asistencia</h2>
+          <p class="text-sm md:text-base text-gray-300 mb-6 flex-1 leading-relaxed">Registra la asistencia diaria por materia y fecha, con opciones de observaciones y generación de reportes automáticos.</p>
+          <a href="#" class="btn-outline-alt text-lg">
+            Registrar Asistencia
+          </a>
+      </div>
+  
+      <div class="bg-white/5 backdrop-blur-xl rounded-4xl p-6 sm:p-10 shadow-2xl border border-green-500/20 flex flex-col items-center text-center transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-green-500/30">
+          <i class="fas fa-book-open text-5xl sm:text-6xl md:text-7xl text-green-400 drop-shadow-lg mb-4 md:mb-6"></i>
+          <h2 class="text-2xl md:text-3xl font-bold text-white mb-3">Gestión de Materias</h2>
+          <p class="text-sm md:text-base text-gray-300 mb-6 flex-1 leading-relaxed">Administra el plan de estudios, asignación de profesores, y la carga horaria de cada materia de forma eficiente.</p>
+          <a href="#" class="btn-outline-alt text-lg">
+            Ver Materias
+          </a>
+      </div>
+  
+    </div>
+</main>
+
+<footer class="mt-auto py-8 bg-gray-900/40 backdrop-blur-lg text-center text-gray-400 border-t border-blue-700/30">
+    <div class="max-w-7xl mx-auto px-4">
+        <p class="text-md">&copy; 2025 - Gestión de usuarios</p>
+    </div>
+</footer>
+  
+<script>
+    const btn = document.getElementById("menu-btn");
+    const menu = document.getElementById("mobile-menu");
+  
+    btn.addEventListener("click", () => {
+      menu.classList.toggle("hidden");
+    });
+
+    const counters = document.querySelectorAll('[data-target]');
+    const speed = 50;
+    let animated = false;
+
+    const animateCounters = () => {
+      if (animated) return;
+      animated = true;
+
+      counters.forEach(counter => {
+        const target = +counter.getAttribute('data-target');
+        let current = 0;
+        const increment = target / speed;
+
+        const updateCounter = () => {
+          if (current < target) {
+            current += increment;
+            counter.innerText = Math.ceil(current);
+            requestAnimationFrame(updateCounter);
+          } else {
+            counter.innerText = target;
+          }
+        };
+        updateCounter();
+      });
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      animateCounters();
+    });
+</script>
+</body>
+</html>

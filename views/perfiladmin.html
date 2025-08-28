@@ -1,0 +1,53 @@
+<!DOCTYPE html>  
+<html lang="es">  
+<head>  
+  <meta charset="UTF-8" />  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />  
+  <title>Mi Perfil - Tilwend Oscuro</title>  
+  <!-- Tailwind CDN -->  
+  <script src="https://cdn.tailwindcss.com"></script>  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />  
+  <style>  
+    /* Activar modo oscuro por defecto y respetar preferencia del usuario */  
+    :root { color-scheme: dark; }  
+    /* Opcional: ajustar para navegadores que no manejan dark por defecto */  
+    @media (prefers-color-scheme: light) {  
+      :root { color-scheme: light; }  
+    }  
+
+    /* Opcional: asegurar que Tailwind aplique dark por defecto en el contenedor si lo prefieres */  
+  </style>  
+</head>  
+<body class="min-h-screen bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 text-white" style="font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto;">  
+  <div class="min-h-screen flex items-center justify-center p-6">  
+    <div class="relative w-full max-w-4xl rounded-2xl overflow-hidden shadow-2xl bg-slate-900/90 border border-slate-700/70">  
+      <!-- Decoración suave -->  
+      <div class="absolute -top-8 -right-8 w-48 h-48 rounded-full bg-gradient-to-br from-indigo-600/60 to-sky-500/40 filter blur-2" aria-hidden="true"></div>  
+
+      <div class="p-8 md:p-10">  
+        <h1 class="text-2xl md:text-3xl font-extrabold text-center text-white mb-6">Mi Perfil</h1>  
+
+        <form class="grid gap-5" autocomplete="off">  
+          <!-- Usuario (no editable) -->  
+          <div class="space-y-2">  
+            <label class="block text-sm font-semibold text-slate-100">Usuario</label>  
+            <input type="text" value="admin" disabled  
+                   class="w-full px-4 py-3 rounded-xl bg-slate-800 text-slate-200/90 border border-slate-700 cursor-not-allowed"  
+                   aria-disabled="true" />  
+            <p class="text-xs text-slate-400">No se puede cambiar el nombre de usuario</p>  
+          </div>  
+
+          <!-- Nombre completo -->  
+          <div class="space-y-2">  
+            <label class="block text-sm font-semibold text-slate-100">Nombre Completo</label>  
+            <input type="text" placeholder="Tu nombre completo"  
+                   class="w-full px-4 py-3 rounded-xl bg-slate-800 text-slate-100 border border-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500" />  
+          </div>  
+
+          <!-- Email -->  
+          <div class="space-y-2">  
+            <label class="block text-sm font-semibold text-slate-100">Email <span class="text-slate-400">(Opcional)</span></label>  
+            <input type="email" placeholder="ejemplo@correo.com"  
+                   class="w-full px-4 py-3 rounded-xl bg-slate-800 text-slate-100 border border-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500" />  
+          </div>  
