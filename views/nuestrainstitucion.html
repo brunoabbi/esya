@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formación Institucional</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#172742',
+                        secondary: '#2d4d85',
+                        accent: '#4f86e6'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+        
+        /* Estilos para el navbar */
+        .navbar {
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-scrolled {
+            background-color: #a7c7ff2d;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.034), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        
+        /* Estilos para el botón de scroll */
+        .scroll-down-btn {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 20;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: bounce 2s infinite;
+        }
+        
+        .scroll-down-btn:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: translateX(-50%) scale(1.1);
+        }
+        
+        .scroll-down-btn i {
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-20px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+        }
+        
+        /* Ajustamos el layout de la sección Hero */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Video de fondo */
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+        
+        /* Filtro oscuro para el video */
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(8, 38, 90, 0.541); /* Filtro oscuro semi-transparente */
+            z-index: -1;
+        }
+        
+        /* Aseguramos que el contenido esté visible */
+        .hero-content {
+            padding-top: 2rem;
+        }
+        
+        /* Centrado de cards */
+        .cards-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .card-item {
+            flex: 0 1 380px;
+            max-width: 380px;
+        }
+        
+        /* Estilos para la galería de imágenes */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.6s ease, transform 0.6s ease;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        
+        .gallery-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.03) translateY(0);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .gallery-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        /* Animaciones para diferentes posiciones */
+        .gallery-item:nth-child(odd) {
+            transition-delay: 0.1s;
+        }
+        
+        .gallery-item:nth-child(even) {
+            transition-delay: 0.2s;
+        }
+        
+        .gallery-item:nth-child(3n) {
+            transition-delay: 0.3s;
+        }
+        
+        .gallery-item:nth-child(4n) {
+            transition-delay: 0.4s;
+        }
+        
+        /* Estilos para el modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .custom-gradient {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 25%, #2c3e50 50%, #1a1a2e 75%, #16213e 100%);
+        }
+        
+        /* Estilos para el modal de video */
+        .video-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .video-modal-content {
+            width: 90%;
+            max-width: 900px;
+            position: relative;
+        }
+        
+        .video-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* Relación de aspecto 16:9 */
+            height: 0;
+            overflow: hidden;
+        }
+        
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section {
+                min-height: 90vh;
+                padding: 60px 0 80px; /* Más espacio abajo para la flecha */
+            }
+            
+            .scroll-down-btn {
+                bottom: 20px; /* Ajustamos posición en móviles */
+            }
+            
+            .card-item {
+                flex: 0 1 100%;
+                max-width: 100%;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.5rem;
+            }
+            
+            .gallery-img {
+                height: 150px;
+            }
+            
+            .video-modal-content {
+                width: 95%;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .gallery-img {
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navbar -->
+    <nav class="navbar fixed top-0 left-0 w-full z-50 py-4 px-6 bg-primary/90 backdrop-blur-sm">
+        <div class="container mx-auto flex justify-between items-center">
+            <!-- Logo -->
+            <div class="flex items-center">
+                <div class="w-10 h-10  flex items-center justify-center text-primary font-bold text-lg mr-3">
+                    <img src="/assets/logo.png" alt="">
+                </div>
+                <span class="text-white text-xl font-bold"></span>
+            </div>
+            
+            <!-- Menu para desktop -->
+            <div class="hidden md:flex space-x-8">
+                <a href="/index.html" class="text-white hover:text-accent transition duration-300 font-medium">Inicio</a>
+                <a href="/views/nuestrahistoria.html" class="text-white hover:text-accent transition duration-300 font-medium">Nuestra Historia</a>
+            </div>
+            
+            <!-- Botón para mobile -->
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-white text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Menu móvil (oculto por defecto) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-primary mt-4 py-4 px-6 rounded-lg">
+            <div class="flex flex-col space-y-4">
+                <a href="/index.html" class="text-white hover:text-accent transition duration-300">Inicio</a>
+                <a href="/views/nuestrahistoria.html" class="text-white hover:text-accent transition duration-300">Nuestra Historia</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section - Con video de fondo -->
+    <section class="relative hero-section px-4 mt-16">
+        <!-- Video de fondo -->
+        <video autoplay muted loop class="video-background">
+            <source src="/assets/vertical.mp4" type="video/mp4">
+            <!-- Fallback para navegadores que no soportan video -->
+        </video>
+        
+        <!-- Filtro oscuro sobre el video -->
+        <div class="video-overlay"></div>
+        
+        <!-- Contenido -->
+        <div class="container mx-auto relative z-10 hero-content">
+            <div class="flex flex-col items-center text-center">
+                <div class="w-full text-white">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6 text-shadow">Escuela de Suboficiales y Agentes: "Agente Juan José Vides"</h2>
+                    <p class="text-xl mb-8 text-shadow">"Cimentar el saber para cumplir con el deber"</p>
+                    <div class="flex justify-center">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Botón de scroll hacia abajo - Ahora visible inmediatamente -->
+        <div class="scroll-down-btn" id="scrollDownBtn">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Sección de características (para contexto) -->
+    <section class="py-16 bg-white" id="nextSection">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Nuestras Propuestas</h2>
+            <div class="cards-container">
+                <div class="card-item bg-gray-50 p-6 rounded-xl shadow-md hover:shadow-lg transition">
+                    <div class="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center text-blue-900 mb-4">
+                        <i class="fas fa-graduation-cap text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Formación de Agentes</h3>
+                    <p class="text-gray-700">Preparación teórica y práctica. Incluye áreas esenciales como el conocimiento jurídico,
+                         los protocolos de actuación, 
+                        el respeto a los derechos humanos y el desarrollo de habilidades de comunicación.</p>
+                </div>
+                <div class="card-item bg-gray-50 p-6 rounded-xl shadow-md hover:shadow-lg transition">
+                    <div class="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center text-blue-900 mb-4">
+                        <i class="fas fa-users text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Capacitación Continua</h3>
+                    <p class="text-gray-700">Formamos agentes con mayor preparación, listos para asumir nuevos desafíos y brindar un servicio policial más eficaz y cercano a la comunidad.
+                        <br> "Crecer como profesional, servir con mayor compromiso."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section - Solo imágenes -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8">La Experiencia dentro de nuestra Escuela</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="/assets/formacion.jpeg" alt="Formación académica" class="gallery-img">
+                </div>
+                <div class="gallery-item">
+                    <img src="/assets/deporte (1).png" alt="Actividad deportiva" class="gallery-img">
+                </div>
+                <div class="gallery-item">
+                    <img src="/assets/deporte (3).png" alt="Actividad deportiva" class="gallery-img">
+                </div>
+                <div class="gallery-item">
+                    <img src="/assets/gallery (2).jpeg" alt="Instalaciones" class="gallery-img">
+                </div>
+                <div class="gallery-item">
+                    <img src="/assets/gallery (3).jpeg" alt="Actividades grupales" class="gallery-img">
+                </div>
+                <div class="gallery-item">
+                    <img src="/assets/capacitacion (4).jpg" alt="Capacitación" class="gallery-img">
+                </div>
+                <div class="gallery-item">
+                    <img src="/assets/capacitacion (2).jpg" alt="Capacitación práctica" class="gallery-img">
+                </div>
+                <div class="gallery-item">
+                    <img src="/assets/capacitacion (1).jpg" alt="Formación especializada" class="gallery-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+   <!-- Sección de Oferta Académica -->
+<section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-4">Oferta Académica - Formación de Agentes</h2>
+        <p class="text-xl text-center text-gray-600 mb-12">Plan de estudios completo para la formación profesional de agentes</p>
+        
+        <div class="max-w-4xl mx-auto">
+            <!-- Materias Anuales -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-bold mb-6 text-primary border-b-2 border-secondary pb-2">Materias Anuales</h3>
+                <ul class="space-y-3">
+                    <li class="flex items-start">
+                        <span class="text-blue-900 mr-2 mt-1">•</span>
+                        <span> CEREMONIAL, PROTOCOLO Y PROCEDIMIENTO POLICIAL.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-blue-900 mr-2 mt-1">•</span>
+                        <span>MÓDULO INICIAL BÁSICO, NORMATIVAS NACIONALES Y PROVINCIALES.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-blue-900 mr-2 mt-1">•</span>
+                        <span> SALUD Y CALIDAD DE VIDA.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-blue-900 mr-2 mt-1">•</span>
+                        <span>DEFENSA PERSONAL APLICADA A LA LABOR DEL AGENTE DE POLICIA.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-blue-900 mr-2 mt-1">•</span>
+                        <span>USO RACIONAL DE LOS DISPOSITIVOS DE COHESION.</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Materias Cuatrimestrales -->
+            <div>
+                <h3 class="text-2xl font-bold mb-6 text-primary border-b-2 border-secondary pb-2">Materias Cuatrimestrales</h3>
+                <ul class="space-y-3">
+                    <li class="flex items-start">
+                        <span class="text-blue-900 mr-2 mt-1">•</span>
+                        <span>PRIMEROS AUXILIOS.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-blue-900 mr-2 mt-1">•</span>
+                        <span> HERRAMIENTAS PARA DETECTAR Y SUPERAR LA ESCALA DE
+ VIOLENCIA.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-blue-900 mr-2 mt-1">•</span>
+                        <span> ENFOQUE SOCIOLÓGICO.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-blue-900 mr-2 mt-1">•</span>
+                        <span> SEGURIDAD Y CONTROL VIAL.
+.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-blue-900 mr-2 mt-1">•</span>
+                        <span> ANÁLISIS DEL DELITO
+</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-blue-900 mr-2 mt-1">•</span>
+                        <span> PRESENCIA DEL DELITO
+</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-blue-900 mr-2 mt-1">•</span>
+                        <span> POLICIA COMUNITARIA
+</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-blue-900 mr-2 mt-1">•</span>
+                        <span>TEORIA Y ABORDAJE DEL CONFLICTO EN LA INTERVENCIÓN DEL
+ AGENTE</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-blue-900 mr-2 mt-1">•</span>
+                        <span> ACTUACIONES POLICIALES FRENTE A SINIESTROS Y EMERGENCIAS</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-4">División Capacitaciones</h2>
+        <p class="text-xl text-center text-gray-600 mb-12"></p>
+        
+        <div class="max-w-4xl mx-auto">
+            <!-- Materias Anuales -->
+            <div class="mb-12">
+                <ul class="space-y-3">
+                    <li class="flex items-start">
+                        <span class="text-blue-900 mr-2 mt-1">•</span>
+                        <span>  Carrera de Taekwondo-ITF con graduación de
+ cinturón negro. </span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-blue-900 mr-2 mt-1">•</span>
+                        <span> Curso de Informática.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-blue-900 mr-2 mt-1">•</span>
+                        <span> Curso Básico del C.E.R.O</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-blue-900 mr-2 mt-1">•</span>
+                        <span>Actualización y Nivelación en Manejo de Armas
+ de Fuego.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-blue-900 mr-2 mt-1">•</span>
+                        <span>Curso Básico del D.O.M.T</span>
+                    </li>
+                       <li class="flex items-start">
+                        <span class="text-blue-900 mr-2 mt-1">•</span>
+                        <span> Curso de Conducción Vehicular para choferes
+ policiales</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-blue-900 mr-2 mt-1">•</span>
+                        <span>  Ley de Estupefacientes (Ley N 27.737)</span>
+                    </li>
+                </ul>
+            </div>
+
+</section>
+
+    <!-- Video Section - Modificada para abrir modal con video local -->
+    <section class="py-16 bg-gray-900 text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Conoce nuestra institución</h2>
+                <p class="text-xl max-w-2xl mx-auto">Descubre en este video cómo es un día en nuestra institución y por qué nuestros estudiantes eligen formarse con nosotros.</p>
+            </div>
+            <div class="max-w-4xl mx-auto rounded-xl overflow-hidden shadow-2xl">
+                <div class="aspect-w-16 aspect-h-9 bg-gray-800 flex items-center justify-center cursor-pointer" id="videoThumbnail">
+                    <div class="text-center p-8">
+                        <div class="w-20 h-20 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-6 hover:scale-110 transition">
+                            <i class="fas fa-play text-2xl"></i>
+                        </div>
+                        <p class="text-lg">Haz clic para reproducir el video</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal para el video local -->
+    <div id="videoModal" class="video-modal">
+        <div class="video-modal-content">
+            <span class="video-close" id="closeVideoModal">&times;</span>
+            <div class="video-container">
+                <video id="localVideo" controls>
+                    <source src="/assets/horizontal.mp4" type="video/mp4">
+                    Tu navegador no soporta el elemento de video.
+                </video>
+            </div>
+        </div>
+    </div>
+
+    <!-- Call to Action - Ahora con formulario -->
+    <section class="py-16 custom-gradient text-white" id="credencialSection">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-6">¿Listo para vivir la experiencia del Poligono Inteligente?</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">¡Obtené tu credencial! <br> Completa el siguiente formulario:</p>
+            
+            <!-- Formulario de 3 preguntas -->
+            <form id="credencialForm" class="max-w-2xl mx-auto bg-white text-gray-800 p-8 rounded-lg shadow-lg">
+                <div class="mb-6 text-left">
+                    <p class="font-medium mb-3">1.Según el contenido, ¿qué tipo de programas ofrece la institución?</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="interes" value="alto" class="mr-2" required>
+                            Formación de Agentes
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="interes" value="medio" class="mr-2">
+                            Capacitación Continua para el personal policial
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="interes" value="bajo" class="mr-2">
+                            Ambas
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="mb-6 text-left">
+                    <p class="font-medium mb-3">2.¿Qué valores promueve la formación policial?</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="conocimiento" value="redes" class="mr-2" required>
+                            Disciplina y compromiso
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="conocimiento" value="recomendacion" class="mr-2">
+                            Respeto a los derechos humanos
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="conocimiento" value="busqueda" class="mr-2">
+                           Vocación de servicio
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="conocimiento" value="otro" class="mr-2">
+                            Todas las anteriores
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="mb-6 text-left">
+                    <p class="font-medium mb-3">3.¿Recomendarías la institución a otra persona interesada en formación policial?</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="area" value="formacion" class="mr-2" required>
+                            Sí
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="area" value="capacitacion" class="mr-2">
+                            Tal vez
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="area" value="ambas" class="mr-2">
+                            No
+                        </label>
+                    </div>
+                </div>
+                
+                <button type="submit" class="bg-blue-900 text-white px-8 py-3 rounded-lg font-bold text-lg hover:bg-blue-800 transition">
+                    Enviar Encuesta
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+           <P style="text-align: center;">@Escuela de Suboficiales y agentes 2025</P>
+        </div>
+    </footer>
+
+    <!-- Modal para descargar PDF -->
+    <div id="downloadModal" class="modal">
+        <div class="modal-content relative">
+            <span class="modal-close" id="closeModal">&times;</span>
+            <h3 class="text-2xl font-bold mb-4">¡Formulario completado!</h3>
+            <p class="mb-6">Tu credencial está lista para descargar. Haz clic en el botón de abajo para obtener tu PDF.</p>
+            <button id="finalDownloadBtn" class="bg-blue-900 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-800 transition">
+                <i class="fas fa-download mr-2"></i> Descargar Credencial PDF
+            </button>
+        </div> 
+    </div>
+
+    <script>
+        // Script para el menú móvil
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Script para el navbar que cambia al hacer scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('navbar-scrolled');
+            } else {
+                navbar.classList.remove('navbar-scrolled');
+            }
+        });
+
+        // Script para el botón de scroll hacia abajo
+        document.getElementById('scrollDownBtn').addEventListener('click', function() {
+            const nextSection = document.getElementById('nextSection');
+            nextSection.scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Script para animar las imágenes de la galería al hacer scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            
+            function checkVisibility() {
+                galleryItems.forEach(item => {
+                    const rect = item.getBoundingClientRect();
+                    const isVisible = (
+                        rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.8 &&
+                        rect.bottom >= 0
+                    );
+                    
+                    if (isVisible) {
+                        item.classList.add('visible');
+                    } else {
+                        // Opcional: remover la clase para que desaparezcan al hacer scroll hacia arriba
+                        // item.classList.remove('visible');
+                    }
+                });
+            }
+            
+            // Verificar visibilidad al cargar la página y al hacer scroll
+            checkVisibility();
+            window.addEventListener('scroll', checkVisibility);
+        });
+
+        // Script para el formulario y modal
+        document.getElementById('credencialForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Mostrar el modal
+            document.getElementById('downloadModal').style.display = 'flex';
+        });
+
+        // Cerrar modal
+        document.getElementById('closeModal').addEventListener('click', function() {
+            document.getElementById('downloadModal').style.display = 'none';
+        });
+
+        // Cerrar modal al hacer clic fuera del contenido
+        window.addEventListener('click', function(e) {
+            const modal = document.getElementById('downloadModal');
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        // Descargar PDF - RUTA CORREGIDA
+        document.getElementById('finalDownloadBtn').addEventListener('click', function() {
+            // Ruta corregida al archivo PDF en la carpeta assets
+            const pdfPath = '/assets/Credencialpoligono.pdf';
+            
+            // Crear un enlace temporal para la descarga
+            const link = document.createElement('a');
+            link.href = pdfPath;
+            link.download = 'credencial_poligono_inteligente.pdf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            // Cerrar el modal después de descargar
+            document.getElementById('downloadModal').style.display = 'none';
+            
+            // Opcional: mostrar mensaje de agradecimiento
+            alert('¡Gracias por completar el formulario! Tu credencial se ha descargado.');
+        });
+
+        // Verificar si el PDF existe y mostrar advertencia si no
+        function checkPdfExists() {
+            const pdfPath = '/assets/Credencialpoligono.pdf';
+            fetch(pdfPath, { method: 'HEAD' })
+            .then(response => {
+                if (!response.ok) {
+                    console.warn('El archivo PDF no se encuentra en la ruta especificada: ' + pdfPath);
+                }
+            })
+            .catch(error => {
+                console.error('Error al verificar el PDF:', error);
+            });
+        }
+
+        // Ejecutar la verificación cuando la página cargue
+        window.addEventListener('load', checkPdfExists);
+
+        // Script para el modal de video LOCAL
+        document.getElementById('videoThumbnail').addEventListener('click', function() {
+            // Mostrar el modal
+            document.getElementById('videoModal').style.display = 'flex';
+            
+            // Reproducir el video automáticamente
+            const video = document.getElementById('localVideo');
+            video.play().catch(error => {
+                console.log('La reproducción automática falló:', error);
+            });
+            
+            // Desplazar al modal
+            document.getElementById('videoModal').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Cerrar modal de video
+        document.getElementById('closeVideoModal').addEventListener('click', function() {
+            // Pausar el video
+            const video = document.getElementById('localVideo');
+            video.pause();
+            video.currentTime = 0;
+            
+            // Ocultar el modal
+            document.getElementById('videoModal').style.display = 'none';
+        });
+
+        // Cerrar modal al hacer clic fuera del contenido
+        window.addEventListener('click', function(e) {
+            const modal = document.getElementById('videoModal');
+            if (e.target === modal) {
+                // Pausar el video
+                const video = document.getElementById('localVideo');
+                video.pause();
+                video.currentTime = 0;
+                
+                // Ocultar el modal
+                modal.style.display = 'none';
+            }
+        });
+
+        // Cerrar modal con la tecla Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const modal = document.getElementById('videoModal');
+                if (modal.style.display === 'flex') {
+                    // Pausar el video
+                    const video = document.getElementById('localVideo');
+                    video.pause();
+                    video.currentTime = 0;
+                    
+                    // Ocultar el modal
+                    modal.style.display = 'none';
+                }
+            }
+        });
+    </script>
+</body>
+</html>
