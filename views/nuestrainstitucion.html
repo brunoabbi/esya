@@ -76,9 +76,8 @@
             }
         }
         
-        /* Ajustamos el layout de la sección Hero */
         .hero-section {
-            min-height: 100vh;
+            min-height: 85vh; 
             display: flex;
             align-items: center;
             position: relative;
@@ -103,7 +102,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(8, 38, 90, 0.541); /* Filtro oscuro semi-transparente */
+            background: rgba(0, 0, 0, 0.555); /* Filtro oscuro semi-transparente */
             z-index: -1;
         }
         
@@ -237,6 +236,7 @@
             color: white;
             font-size: 2rem;
             cursor: pointer;
+            z-index: 1001;
         }
         
         .video-container {
@@ -246,7 +246,7 @@
             overflow: hidden;
         }
         
-        .video-container video {
+        .video-container iframe {
             position: absolute;
             top: 0;
             left: 0;
@@ -257,7 +257,7 @@
         
         @media (max-width: 768px) {
             .hero-section {
-                min-height: 90vh;
+                min-height: 80vh; /* Ajustado para móviles */
                 padding: 60px 0 80px; /* Más espacio abajo para la flecha */
             }
             
@@ -330,7 +330,7 @@
         </div>
     </nav>
 
-    <!-- Hero Section - Con video de fondo -->
+    <!-- Hero Section - Con video de fondo - MODIFICADO: altura reducida -->
     <section class="relative hero-section px-4 mt-16">
         <!-- Video de fondo -->
         <video autoplay muted loop class="video-background">
@@ -362,7 +362,7 @@
     <!-- Sección de características (para contexto) -->
     <section class="py-16 bg-white" id="nextSection">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">Nuestras Propuestas</h2>
+            <h2 class="text-3xl font-bold text-center mb-12"><br>Nuestras Propuestas</h2>
             <div class="cards-container">
                 <div class="card-item bg-gray-50 p-6 rounded-xl shadow-md hover:shadow-lg transition">
                     <div class="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center text-blue-900 mb-4">
@@ -378,7 +378,8 @@
                         <i class="fas fa-users text-2xl"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3">Capacitación Continua</h3>
-                    <p class="text-gray-700">Formamos agentes con mayor preparación, listos para asumir nuevos desafíos y brindar un servicio policial más eficaz y cercano a la comunidad.
+                    <p class="text-gray-700">Formamos Suboficiales y Agentes con mayor preparación, convinando excelencia, actualización y práctica profesional,
+                        listos para asumir nuevos desafíos y brindar un servicio policial más eficaz y cercano a la comunidad.
                         <br> "Crecer como profesional, servir con mayor compromiso."
                     </p>
                 </div>
@@ -433,23 +434,24 @@
                 <ul class="space-y-3">
                     <li class="flex items-start">
                         <span class="text-blue-900 mr-2 mt-1">•</span>
-                        <span> CEREMONIAL, PROTOCOLO Y PROCEDIMIENTO POLICIAL.</span>
+                        <span> Ceremonial, Protocolo Y Procedimiento Policial.</span>
                     </li>
                     <li class="flex items-start">
                         <span class="text-blue-900 mr-2 mt-1">•</span>
-                        <span>MÓDULO INICIAL BÁSICO, NORMATIVAS NACIONALES Y PROVINCIALES.</span>
+                        <span>Módulo Inicial Básico, Normativas Nacionales Y Provinciales.
+</span>
                     </li>
                     <li class="flex items-start">
                         <span class="text-blue-900 mr-2 mt-1">•</span>
-                        <span> SALUD Y CALIDAD DE VIDA.</span>
+                        <span> Salud Y Calidad De Vida.</span>
                     </li>
                     <li class="flex items-start">
                         <span class="text-blue-900 mr-2 mt-1">•</span>
-                        <span>DEFENSA PERSONAL APLICADA A LA LABOR DEL AGENTE DE POLICIA.</span>
+                        <span>Defensa Personal Aplicada A La Labor Del Agente De Policía.</span>
                     </li>
                     <li class="flex items-start">
                         <span class="text-blue-900 mr-2 mt-1">•</span>
-                        <span>USO RACIONAL DE LOS DISPOSITIVOS DE COHESION.</span>
+                        <span>Uso Racional De Los Dispositivos De Cohesión.</span>
                     </li>
                 </ul>
             </div>
@@ -460,45 +462,44 @@
                 <ul class="space-y-3">
                     <li class="flex items-start">
                         <span class="text-blue-900 mr-2 mt-1">•</span>
-                        <span>PRIMEROS AUXILIOS.</span>
+                        <span>Primeros Auxilios.</span>
                     </li>
                     <li class="flex items-start">
                         <span class="text-blue-900 mr-2 mt-1">•</span>
-                        <span> HERRAMIENTAS PARA DETECTAR Y SUPERAR LA ESCALA DE
- VIOLENCIA.</span>
+                        <span> Herramientas Para Detectar Y Superar La Escala De
+ Violencia.</span>
                     </li>
                     <li class="flex items-start">
                         <span class="text-blue-900 mr-2 mt-1">•</span>
-                        <span> ENFOQUE SOCIOLÓGICO.</span>
+                        <span> Enfoque Sociológico.</span>
                     </li>
                     <li class="flex items-start">
                         <span class="text-blue-900 mr-2 mt-1">•</span>
-                        <span> SEGURIDAD Y CONTROL VIAL.
+                        <span> Seguridad Y Control Vial.
 .</span>
                     </li>
                     <li class="flex items-start">
                         <span class="text-blue-900 mr-2 mt-1">•</span>
-                        <span> ANÁLISIS DEL DELITO
+                        <span> Análisis Del Delito.
 </span>
                     </li>
                     <li class="flex items-start">
                         <span class="text-blue-900 mr-2 mt-1">•</span>
-                        <span> PRESENCIA DEL DELITO
+                        <span> Presencia Del Delito.
 </span>
                     </li>
                     <li class="flex items-start">
                         <span class="text-blue-900 mr-2 mt-1">•</span>
-                        <span> POLICIA COMUNITARIA
+                        <span> Policía Comunitaria.
 </span>
                     </li>
                     <li class="flex items-start">
                         <span class="text-blue-900 mr-2 mt-1">•</span>
-                        <span>TEORIA Y ABORDAJE DEL CONFLICTO EN LA INTERVENCIÓN DEL
- AGENTE</span>
+                        <span>Teoría Y Abordaje Del Conflicto En La Intervención Del Agente.</span>
                     </li>
                     <li class="flex items-start">
                         <span class="text-blue-900 mr-2 mt-1">•</span>
-                        <span> ACTUACIONES POLICIALES FRENTE A SINIESTROS Y EMERGENCIAS</span>
+                        <span> Actuaciones Policiales Frente a Siniestros y Emergencias.</span>
                     </li>
                 </ul>
             </div>
@@ -510,8 +511,11 @@
 <section class="py-16 bg-white">
     <div class="container mx-auto px-4">
         <h2 class="text-3xl font-bold text-center mb-4">División Capacitaciones</h2>
-        <p class="text-xl text-center text-gray-600 mb-12"></p>
-        
+        <p class="text-xl text-center text-gray-600 mb-12">A través del "Plan anual de Capacitaciones", se instruye y perfecciona 
+            a todo el personal de Suboficiales y Agentes mediante cursos en modalidad virtual, como así también presencial,
+             organizados por esta Escuela de Formación Policial
+            en forma conjunta con la Subsecretaría de Control y Gestión del Ministerio de Seguridad de la Provincia. <br>
+        Entre los cuales se destacan:</p>
         <div class="max-w-4xl mx-auto">
             <!-- Materias Anuales -->
             <div class="mb-12">
@@ -527,7 +531,7 @@
                     </li>
                     <li class="flex items-start">
                         <span class="text-blue-900 mr-2 mt-1">•</span>
-                        <span> Curso Básico del C.E.R.O</span>
+                        <span> Curson Básico del C.E.R.O</span>
                     </li>
                     <li class="flex items-start">
                         <span class="text-blue-900 mr-2 mt-1">•</span>
@@ -547,12 +551,16 @@
                         <span class="text-blue-900 mr-2 mt-1">•</span>
                         <span>  Ley de Estupefacientes (Ley N 27.737)</span>
                     </li>
+                    <li class="flex items-start">
+                        <span class="text-blue-900 mr-2 mt-1">•</span>
+                        <span>Entre otros.</span>
+                    </li>
                 </ul>
             </div>
 
 </section>
 
-    <!-- Video Section - Modificada para abrir modal con video local -->
+    <!-- Video Section - Modificada para abrir modal con video de YouTube -->
     <section class="py-16 bg-gray-900 text-white">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
@@ -572,20 +580,16 @@
         </div>
     </section>
 
-    <!-- Modal para el video local -->
+    <!-- Modal para el video de YouTube -->
     <div id="videoModal" class="video-modal">
         <div class="video-modal-content">
             <span class="video-close" id="closeVideoModal">&times;</span>
             <div class="video-container">
-                <video id="localVideo" controls>
-                    <source src="/assets/horizontal.mp4" type="video/mp4">
-                    Tu navegador no soporta el elemento de video.
-                </video>
+                <iframe id="youtubeVideo" src="https://www.youtube.com/embed/I6NKWjvmTkQ?si=tdUsMYjl9SfCB8Sr" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
     </div>
 
-    <!-- Call to Action - Ahora con formulario -->
     <section class="py-16 custom-gradient text-white" id="credencialSection">
         <div class="container mx-auto px-4 text-center">
             <h2 class="text-3xl font-bold mb-6">¿Listo para vivir la experiencia del Poligono Inteligente?</h2>
@@ -694,10 +698,15 @@
             }
         });
 
-        // Script para el botón de scroll hacia abajo
+        // Script para el botón de scroll hacia abajo - MODIFICADO: desplazamiento ajustado
         document.getElementById('scrollDownBtn').addEventListener('click', function() {
             const nextSection = document.getElementById('nextSection');
-            nextSection.scrollIntoView({ behavior: 'smooth' });
+            const offsetPosition = nextSection.offsetTop - 80; // Ajustado para no cortar el título
+            
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
         });
 
         // Script para animar las imágenes de la galería al hacer scroll
@@ -784,16 +793,10 @@
         // Ejecutar la verificación cuando la página cargue
         window.addEventListener('load', checkPdfExists);
 
-        // Script para el modal de video LOCAL
+        // Script para el modal de video de YOUTUBE
         document.getElementById('videoThumbnail').addEventListener('click', function() {
             // Mostrar el modal
             document.getElementById('videoModal').style.display = 'flex';
-            
-            // Reproducir el video automáticamente
-            const video = document.getElementById('localVideo');
-            video.play().catch(error => {
-                console.log('La reproducción automática falló:', error);
-            });
             
             // Desplazar al modal
             document.getElementById('videoModal').scrollIntoView({ behavior: 'smooth' });
@@ -801,10 +804,10 @@
 
         // Cerrar modal de video
         document.getElementById('closeVideoModal').addEventListener('click', function() {
-            // Pausar el video
-            const video = document.getElementById('localVideo');
-            video.pause();
-            video.currentTime = 0;
+            // Detener el video de YouTube
+            const iframe = document.getElementById('youtubeVideo');
+            const iframeSrc = iframe.src;
+            iframe.src = iframeSrc; // Esto recarga el iframe, deteniendo el video
             
             // Ocultar el modal
             document.getElementById('videoModal').style.display = 'none';
@@ -814,10 +817,10 @@
         window.addEventListener('click', function(e) {
             const modal = document.getElementById('videoModal');
             if (e.target === modal) {
-                // Pausar el video
-                const video = document.getElementById('localVideo');
-                video.pause();
-                video.currentTime = 0;
+                // Detener el video de YouTube
+                const iframe = document.getElementById('youtubeVideo');
+                const iframeSrc = iframe.src;
+                iframe.src = iframeSrc; // Esto recarga el iframe, deteniendo el video
                 
                 // Ocultar el modal
                 modal.style.display = 'none';
@@ -829,12 +832,11 @@
             if (e.key === 'Escape') {
                 const modal = document.getElementById('videoModal');
                 if (modal.style.display === 'flex') {
-                    // Pausar el video
-                    const video = document.getElementById('localVideo');
-                    video.pause();
-                    video.currentTime = 0;
+                    // Detener el video de YouTube
+                    const iframe = document.getElementById('youtubeVideo');
+                    const iframeSrc = iframe.src;
+                    iframe.src = iframeSrc; // Esto recarga el iframe, deteniendo el video
                     
-                    // Ocultar el modal
                     modal.style.display = 'none';
                 }
             }
