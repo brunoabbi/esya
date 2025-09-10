@@ -369,9 +369,11 @@
                         <i class="fas fa-graduation-cap text-2xl"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3">Formación de Agentes</h3>
-                    <p class="text-gray-700">Preparación teórica y práctica. Incluye áreas esenciales como el conocimiento jurídico,
-                         los protocolos de actuación, 
-                        el respeto a los derechos humanos y el desarrollo de habilidades de comunicación. </p>
+                    <p class="text-gray-700">Preparación teórica y práctica. Incluye áreas esenciales como el conocimiento jurídico, 
+                        los protocolos de actuación, el respeto a los derechos humanos y el desarrollo de habilidades de comunicación. 
+                        Esta formación garantiza un alto nivel de instrucción,
+                         lo que permite a los profesionales desempeñar sus funciones con eficacia, criterio y responsabilidad 
+                         en el cumplimiento de sus funciones. </p>
                 </div>
                 <div class="card-item bg-gray-50 p-6 rounded-xl shadow-md hover:shadow-lg transition">
                     <div class="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center text-blue-900 mb-4">
@@ -510,7 +512,7 @@
 <section class="py-16 bg-white">
     <div class="container mx-auto px-4">
         <h2 class="text-3xl font-bold text-center mb-4">División Capacitaciones</h2>
-        <p class="text-xl text-center text-gray-600 mb-12">A través del Plan anual de Capacitaciones, se instruye y perfecciona 
+        <p class="text-xl text-center text-gray-600 mb-12">A través del Plan Anual de Capacitaciones, se instruye y perfecciona 
             a todo el personal de Suboficiales y Agentes mediante cursos en modalidad virtual, como así también presencial,
              organizados por esta Escuela de Formación Policial
             en forma conjunta con la Subsecretaría de Control y Gestión del Ministerio de Seguridad de la Provincia. <br>
@@ -530,7 +532,7 @@
                     </li>
                     <li class="flex items-start">
                         <span class="text-blue-900 mr-2 mt-1">•</span>
-                        <span> Curson Básico del C.E.R.O</span>
+                        <span> Curso Básico del C.E.R.O.</span>
                     </li>
                     <li class="flex items-start">
                         <span class="text-blue-900 mr-2 mt-1">•</span>
@@ -539,16 +541,15 @@
                     </li>
                     <li class="flex items-start">
                         <span class="text-blue-900 mr-2 mt-1">•</span>
-                        <span>Curso Básico del D.O.M.T</span>
+                        <span>Curso Básico del D.O.M.T.</span>
                     </li>
                        <li class="flex items-start">
                         <span class="text-blue-900 mr-2 mt-1">•</span>
-                        <span> Curso de Conducción Vehicular para choferes
- policiales</span>
+                        <span> Curso de Conducción Vehicular para choferes policiales.</span>
                     </li>
                     <li class="flex items-start">
                         <span class="text-blue-900 mr-2 mt-1">•</span>
-                        <span>  Ley de Estupefacientes (Ley N 27.737)</span>
+                        <span>  Ley de Estupefacientes (Ley N 27.737).</span>
                     </li>
                     <li class="flex items-start">
                         <span class="text-blue-900 mr-2 mt-1">•</span>
@@ -758,12 +759,12 @@
         // Descargar PDF - RUTA CORREGIDA
 document.getElementById('finalDownloadBtn').addEventListener('click', function() {
     // Ruta corregida al archivo PDF en la carpeta assets
-    const pdfPath = '/assets/Credencialpoligono (1).pdf';
+    const pdfPath = '/assets/poligonocredencial.pdf';
     
     // Crear un enlace temporal para la descarga
     const link = document.createElement('a');
     link.href = pdfPath;
-    link.download = 'Credencialpoligono (1).pdf';
+    link.download = 'poligonocredencial.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -777,7 +778,7 @@ document.getElementById('finalDownloadBtn').addEventListener('click', function()
 
 // Verificar si el PDF existe y mostrar advertencia si no
 function checkPdfExists() {
-    const pdfPath = 'assets/Credencialpoligono (1).pdf';
+    const pdfPath = 'assets/poligonocredencial.pdf';
     fetch(pdfPath, { method: 'HEAD' })
     .then(response => {
         if (!response.ok) {
