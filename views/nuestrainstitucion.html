@@ -757,38 +757,38 @@
         });
 
         // Descargar PDF - RUTA CORREGIDA
-        document.getElementById('finalDownloadBtn').addEventListener('click', function() {
-            // Ruta corregida al archivo PDF en la carpeta assets
-            const pdfPath = '/assets/Credencialpoligono.pdf';
-            
-            // Crear un enlace temporal para la descarga
-            const link = document.createElement('a');
-            link.href = pdfPath;
-            link.download = 'credencial_poligono_inteligente.pdf';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            
-            // Cerrar el modal después de descargar
-            document.getElementById('downloadModal').style.display = 'none';
-            
-            // Opcional: mostrar mensaje de agradecimiento
-            alert('¡Gracias por completar el formulario! Tu credencial se ha descargado.');
-        });
+document.getElementById('finalDownloadBtn').addEventListener('click', function() {
+    // Ruta corregida al archivo PDF en la carpeta assets
+    const pdfPath = '/assets/Credencialpoligono (1).pdf';
+    
+    // Crear un enlace temporal para la descarga
+    const link = document.createElement('a');
+    link.href = pdfPath;
+    link.download = 'Credencialpoligono (1).pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
+    // Cerrar el modal después de descargar
+    document.getElementById('downloadModal').style.display = 'none';
+    
+    // Opcional: mostrar mensaje de agradecimiento
+    alert('¡Gracias por completar el formulario! Tu credencial se ha descargado.');
+});
 
-        // Verificar si el PDF existe y mostrar advertencia si no
-        function checkPdfExists() {
-            const pdfPath = '/assets/Credencialpoligono.pdf';
-            fetch(pdfPath, { method: 'HEAD' })
-            .then(response => {
-                if (!response.ok) {
-                    console.warn('El archivo PDF no se encuentra en la ruta especificada: ' + pdfPath);
-                }
-            })
-            .catch(error => {
-                console.error('Error al verificar el PDF:', error);
-            });
+// Verificar si el PDF existe y mostrar advertencia si no
+function checkPdfExists() {
+    const pdfPath = 'assets/Credencialpoligono (1).pdf';
+    fetch(pdfPath, { method: 'HEAD' })
+    .then(response => {
+        if (!response.ok) {
+            console.warn('El archivo PDF no se encuentra en la ruta especificada: ' + pdfPath);
         }
+    })
+    .catch(error => {
+        console.error('Error al verificar el PDF:', error);
+    });
+}
 
         // Ejecutar la verificación cuando la página cargue
         window.addEventListener('load', checkPdfExists);
